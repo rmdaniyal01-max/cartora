@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="description"
+            content="my website">
+        <meta charset="UTF-8">
+        <link rel="Icon" href="images/Cartora-icon.png">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cartora</title>
+    </head>
+
+    <body>
+        
+        <header id="header">
+                
+            <a href="home.html"><img src="images/Cartora-Logo.png" alt="Cartora-Logo" width="200px" id="header-logo"></a>
+
+            <nav>
+
+                <button id="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul id="nav-links">
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                    <div id="navIcons-cart-profile">
+                        <a href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="cart-icon">
+                            <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/></svg>
+                        </a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="profile-icon">
+                            <path d="M240 192C240 147.8 275.8 112 320 112C364.2 112 400 147.8 400 192C400 236.2 364.2 272 320 272C275.8 272 240 236.2 240 192zM448 192C448 121.3 390.7 64 320 64C249.3 64 192 121.3 192 192C192 262.7 249.3 320 320 320C390.7 320 448 262.7 448 192zM144 544C144 473.3 201.3 416 272 416L368 416C438.7 416 496 473.3 496 544L496 552C496 565.3 506.7 576 520 576C533.3 576 544 565.3 544 552L544 544C544 446.8 465.2 368 368 368L272 368C174.8 368 96 446.8 96 544L96 552C96 565.3 106.7 576 120 576C133.3 576 144 565.3 144 552L144 544z"/></svg>
+                        </a>
+                    </div>
+                </ul>
+
+            </nav>
+
+            <div id="icons-cart-profile">
+                <a href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="cart-icon">
+                    <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/></svg>
+                </a>
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="profile-icon">
+                    <path d="M240 192C240 147.8 275.8 112 320 112C364.2 112 400 147.8 400 192C400 236.2 364.2 272 320 272C275.8 272 240 236.2 240 192zM448 192C448 121.3 390.7 64 320 64C249.3 64 192 121.3 192 192C192 262.7 249.3 320 320 320C390.7 320 448 262.7 448 192zM144 544C144 473.3 201.3 416 272 416L368 416C438.7 416 496 473.3 496 544L496 552C496 565.3 506.7 576 520 576C533.3 576 544 565.3 544 552L544 544C544 446.8 465.2 368 368 368L272 368C174.8 368 96 446.8 96 544L96 552C96 565.3 106.7 576 120 576C133.3 576 144 565.3 144 552L144 544z"/></svg>
+                </a>
+            </div>
+
+        </header>
+
+        <main>
+            <section id="hero-section">
+                <div id="hero-contentContainer">
+
+                    <div id="hero-content">
+                        <h5 id="heroMini-heading">Shop smarter, Live better</h5>
+                        <p id="hero-heading">Discover <span>Products</span> You'll Love.</p>
+                        <p id="hero-description">Welcome to Cartora, a uniquely crafted online marketplace designed with you in mind. We bridge the gap between convenience and quality, offering a handpicked collection across electronics, fashion, home décor, and accessories. Experience a streamlined frontend built from the ground up to make finding what you love effortless.</p>
+                        <div id="hero-buttons">
+                            <button id="heroButton1">Start Shopping</button>
+                            <button id="heroButton2">Explore now</button>
+                        </div>
+
+                        <p id="trust-badge">🔒 100% secure payments <br>⭐ 10,000+ happy customers.</p>
+                    </div>
+                    <div id="hero-image">
+                        <img src="images/heroimage.png" alt="HERO FEATURED IMAGE" id="heroFeatured-image">
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section id="categories-section">
+                <div id="categories-contentContainer">
+
+                    <h2 id="categories-heading">
+                        Browse Our Categories
+                    </h2>
+                    <span id="categories-spanline"></span>
+                    <div id="categories-content">
+                        <a href="categories.html"><div class="categories-Cards">
+                            <img src="images/electronics.jpg" alt="electronics" class="cards-image">
+                            <h3 class="cards-name">Electronics</h3>
+                            <button class="cards-button">Shop Now &rarr;</button>
+                        </div></a>
+
+                        <a href="categories.html"><div class="categories-Cards">
+                            <img src="images/decorations.jpg" alt="decoration" class="cards-image">
+                            <h3 class="cards-name">Home Decor</h3>
+                            <button class="cards-button">Shop Now &rarr;</button>
+                        </div></a>
+
+                        <a href="categories.html"><div class="categories-Cards">
+                            <img src="images/fashion.jpg" alt="fashion" class="cards-image">
+                            <h3 class="cards-name">Fashion</h3>
+                            <button class="cards-button">Shop Now &rarr;</button>
+                        </div></a>
+
+                        <a href="categories.html"><div class="categories-Cards">
+                            <img src="images/accessories.jpg" alt="Accessories" class="cards-image">
+                            <h3 class="cards-name">Accessories</h3>
+                            <button class="cards-button">Shop Now &rarr;</button>
+                        </div></a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="featured-section">
+                <div id="featured-contentContainer">
+
+                    <h2 id="featured-heading">
+                        Featured Products
+                    </h2> 
+                    <span id="featured-spanline"></span>
+                    <p id="featured-description">Explore our most popular products.</p>
+                    <div id="featured-content">
+                        <div class="featured-Cards">
+                            <div class="product-image">
+                            <span class="product-badge">-10%</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="product-wishlistIcon">
+                                <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
+                            <img src="images/headphones.jpg" alt="Headphones">
+                            </div>
+                            <h3 class="product-name">Sony Wh-1000XM5</h3>
+                            <p class="product-brand">Sony</p>
+                            <p class="product-rating">Ratings: ⭐⭐⭐⭐⭐ (4.8)</p>
+                            <p class="product-price">Rs <ins>49,500</ins></p><p class="original-price">Rs <del>50,000</del></p>
+                            <button class="product-button">🛒 Add to Cart</button>
+                        </div>
+
+                        <div class="featured-Cards">
+                            <div class="product-image">
+                            <span class="product-badge">HOT</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="product-wishlistIcon">
+                                <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
+                            <img src="images/smartwatch.jpg" alt="Apple Watch">
+                            </div>
+                            <h3 class="product-name">Apple Watch Series 10</h3>
+                            <p class="product-brand">Apple</p>
+                            <p class="product-rating">Ratings: ⭐⭐⭐⭐⭐ (4.8)</p>
+                            <p class="product-price">Rs <ins>120,000</ins></p> <p class="original-price">Rs <del>122,000</del></p>
+                            <button class="product-button">🛒 Add to Cart</button>
+                        </div>
+
+                        <div class="featured-Cards">
+                            <div class="product-image">
+                            <span class="product-badge">BEST SELLER</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="product-wishlistIcon">
+                                <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
+                            <img src="images/shoes.jpg" alt="Nike Shoes">
+                            </div>
+                            <h3 class="product-name">Nike Air Force 1</h3>
+                            <p class="product-brand">Nike</p>
+                            <p class="product-rating">Ratings: ⭐⭐⭐⭐⭐ (4.8)</p>
+                            <p class="product-price">Rs <ins>33,000</ins></p> <p class="original-price">Rs <del>34,000</del></p>
+                            <button class="product-button">🛒 Add to Cart</button>
+                        </div>
+
+                        <div class="featured-Cards">
+                            <div class="product-image">
+                            <span class="product-badge">NEW</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="product-wishlistIcon">
+                                <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
+                            <img src="images/keyboard.jpg" alt="Corsair Keyboard">
+                            </div>
+                            <h3 class="product-name">Corsair K70 RGB</h3>
+                            <p class="product-brand">Corsair</p>
+                            <p class="product-rating">Ratings: ⭐⭐⭐⭐⭐ (4.8)</p>
+                            <p class="product-price">Rs <ins>40,000</ins></p> <p class="original-price">Rs <del>42,000</del> </p>
+                            <button class="product-button">🛒 Add to Cart</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="flash-header">
+                <div id="flashHeader-content">
+                    <h1>🔥 Flash Deals</h1>
+                    <p>Limited-time offers. Grab them before they're gone!</p>
+                    <h2>Hurry Up! Deals End In</h2>
+                    <p>04 : 22 : 32 : 40</p>
+                    <p>Days Hours Min Sec</p>
+                </div>
+            </section>
+            <section id="flash-section">
+                <div id="flash-contentContainer">
+
+                    <div id="flash-content">
+                        <div class="flash-Cards">
+                            <div class="flashProduct-image">
+                                <span class="flashProduct-badge">Trending</span>
+                                <img src="images/asus laptop.jpg" alt="ASUS LAPTOP">
+                            </div>
+                            <div class="flashProduct-details">
+                                <h3 class="flashProduct-name">ASUS TUF GAMING F15</h3>
+                                <p class="flashProduct-brand">Asus</p>
+                                <p class="flashProduct-rating">Ratings: ⭐⭐⭐⭐⭐ (4.9)</p>
+                                <p class="flashProduct-price">Rs <ins>368,999</ins></p> <p class="flashOriginal-price">Rs <del>400,000</del></p>
+                                <p class="flashProduct-stock">Only 6 Left</p>
+                                <div class="flash-progressBar">
+                                    <div class="flash-progressFill"></div>
+                                    sold 80%
+                                </div>
+                                <button class="flashProduct-button">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <div class="flash-Cards">
+                            <div class="flashProduct-image">
+                                <span class="flashProduct-badge">HOT</span>
+                                <img src="images/iphone 16 pro.jpg" alt="Iphone 16 Pro">
+                            </div>
+                            <div class="flashProduct-details">
+                                <h3 class="flashProduct-name">Iphone 16 Pro</h3>
+                                <p class="flashProduct-brand">Apple</p>
+                                <p class="flashProduct-rating">Ratings: ⭐⭐⭐⭐⭐ (4.9)</p>
+                                <p class="flashProduct-price">Rs <ins>319,999</ins></p> <p class="flashOriginal-price">Rs <del>322,000</del></p>
+                                <p class="flashProduct-stock">Only 10 Left</p>
+                                <div class="flash-progressBar">
+                                    <div class="flash-progressFill"></div>
+                                    sold 70%
+                                </div>
+                                <button class="flashProduct-button">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <div class="flash-Cards">
+                            <div class="flashProduct-image">
+                                <span class="flashProduct-badge">-5%</span>
+                                <img src="images/PS5.jpg" alt="PS5 Pro 2TB">
+                            </div>
+                            <div class="flashProduct-details">
+                                <h3 class="flashProduct-name">PS5 Pro 2TB</h3>
+                                <p class="flashProduct-brand">PlayStation</p>
+                                <p class="flashProduct-rating">Ratings: ⭐⭐⭐⭐⭐ (4.9)</p>
+                                <p class="flashProduct-price">Rs <ins>342,000</ins></p> <p class="flashOriginal-price">Rs <del>360,000</del></p>
+                                <p class="flashProduct-stock">Only 3 Left</p>
+                                <div class="flash-progressBar">
+                                    <div class="flash-progressFill"></div>
+                                    sold 90%
+                                </div>
+                                <button class="flashProduct-button">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <div class="flash-Cards">
+                            <div class="flashProduct-image">
+                                <span class="flashProduct-badge">-5%</span>
+                                <img src="images/samsung-TV.jpg" alt="Samsung Odyssey Monitor">
+                            </div>
+                            <div class="flashProduct-details">
+                                <h3 class="flashProduct-name">Odyssey G5</h3>
+                                <p class="flashProduct-brand">Samsung</p>
+                                <p class="flashProduct-rating">Ratings: ⭐⭐⭐⭐⭐ (4.9)</p>
+                                <p class="flashProduct-price">Rs <ins>86,999</ins></p> <p class="flashOriginal-price">Rs <del>80,000</del></p>
+                                <p class="flashProduct-stock">Only 7 Left</p>
+                                <div class="flash-progressBar">
+                                    <div class="flash-progressFill"></div>
+                                    sold 85%
+                                </div>
+                                <button class="flashProduct-button">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+
+        <footer>
+            <p>Thanks for Shopping, Feel free to explore the site🤍</p>
+            <p>CopyRight &copy; Cartora, All rights reseverd</p>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
