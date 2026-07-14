@@ -683,7 +683,7 @@ footer p{
         width: 80%;
         height: 300px;
         padding: 20px;
-        animation: header 0.5s ease forwards;
+        animation: header 1s linear forwards;
     }
 
     #navIcons-cart-profile{
@@ -704,9 +704,22 @@ footer p{
     #getStarted{
         display: none;
     }
+    #hero-section{
+        background-color: rgb(0, 0, 66);
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        bottom: 60px;
+        padding: 60px 5px;
+        min-height: 100dvh;
+        transform-origin: top;
+        animation: fadeIn 2s ease-in forwards;
+    }
 
     #hero-contentContainer{
         flex-direction: column;
+        gap: 40px;
     }
     #hero-content{
         width: auto;
