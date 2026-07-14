@@ -135,6 +135,8 @@ body::-webkit-scrollbar{
     bottom: 60px;
     padding: 10px;
     min-height: 100dvh;
+    transform-origin: top;
+    animation: fadeIn 2s ease-in forwards;
 }
 #hero-contentContainer{
     display: flex;
@@ -149,6 +151,16 @@ body::-webkit-scrollbar{
     width: 40%;
     padding: 10px;
 }
+@keyframes fadeIn{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 #heroMini-heading{
     color: var(--background);
     background-color: var(--primary);
@@ -156,6 +168,9 @@ body::-webkit-scrollbar{
     padding: 5px 15px;
     margin: 5px 0px;
     border-radius: 20px;
+    transform-origin: left;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
 }
 
 #hero-heading{
@@ -165,6 +180,9 @@ body::-webkit-scrollbar{
     width: max-content;
     max-width: 550px;
     margin: 10px 0px 50px 0px;
+    transform-origin: left;
+    opacity: 0;
+    animation: fadeIn 2s ease-in 1s forwards;
 }
 #hero-heading span{
     color: var(--primary);
@@ -174,11 +192,16 @@ body::-webkit-scrollbar{
     color: var(--background);
     max-width: 550px;
     margin: 10px 0px 50px 0px;
+    opacity: 0;
+    transform-origin: bottom right;
+    animation: fadeIn 1s ease-in 2s forwards;
 }
 
 #hero-buttons{
     display: flex;
     gap: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in 3s forwards;
 }
 
 #heroButton1{
@@ -216,6 +239,9 @@ body::-webkit-scrollbar{
 #trust-badge{
     color: rgb(138, 138, 138);
     margin: 30px 0px 0px 0px;
+    opacity: 0;
+    transform-origin: top left;
+    animation: fadeIn 1s ease-in 4s forwards;
 }
 
 #hero-image{
@@ -228,6 +254,9 @@ body::-webkit-scrollbar{
 
 #heroFeatured-image{
     width: 600px;
+    opacity: 0;
+    transform-origin: bottom right;
+    animation: fadeIn 2s ease-in forwards;
 }
 
 /*categories section*/
