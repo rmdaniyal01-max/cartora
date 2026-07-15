@@ -191,7 +191,6 @@ body::-webkit-scrollbar{
     animation: fadeIn 2s ease-in forwards;
 }
 #hero-contentContainer{
-    border: 1px solid white;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -293,7 +292,6 @@ body::-webkit-scrollbar{
 }
 
 #hero-image{
-    border: 1px solid white;
     width: max-content;
     display: flex;
     justify-content: center;
