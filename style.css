@@ -116,7 +116,7 @@ body::-webkit-scrollbar{
 #nav-links a{
     color: var(--accent);
     text-decoration: none;
-    font-size: 15px;
+    font-size: clamp(10px, 1.5vw, 20px);
     font-weight: 700;
     padding: 5px 20px 15px 20px;
 }
@@ -151,7 +151,7 @@ body::-webkit-scrollbar{
 
 .cart-icon{
     fill: var(--accent);
-    width: 30px;
+    width: clamp(10px, 4vw, 20px);
 }
 .cart-icon:hover{
     fill: var(--primary);
@@ -159,7 +159,7 @@ body::-webkit-scrollbar{
 
 .profile-icon{
     fill: var(--accent);
-    width: 30px;
+    width: clamp(10px, 4vw, 20px);
 }
 .profile-icon:hover{
     fill: var(--primary);
@@ -185,11 +185,13 @@ body::-webkit-scrollbar{
     align-items: center;
     bottom: 60px;
     padding: 10px;
-    min-height: 100dvh;
+    height: clamp(50dvh, 100dvh, 100dvh);
+    width: clamp(50dvw, 100dvw, 100dvw);
     transform-origin: top;
     animation: fadeIn 2s ease-in forwards;
 }
 #hero-contentContainer{
+    border: 1px solid white;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -217,7 +219,7 @@ body::-webkit-scrollbar{
 
 #hero-heading{
     color: var(--background);
-    font-size: 50px;
+    font-size: clamp(30px, 50px, 50px);
     font-weight: bolder;
     width: max-content;
     max-width: 550px;
@@ -291,7 +293,8 @@ body::-webkit-scrollbar{
 }
 
 #hero-image{
-    width: 40%;
+    border: 1px solid white;
+    width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -299,7 +302,7 @@ body::-webkit-scrollbar{
 }
 
 #heroFeatured-image{
-    width: 600px;
+    width: clamp(200px, 50vw, 600px);
     opacity: 0;
     transform-origin: bottom right;
     animation:
@@ -641,7 +644,7 @@ body::-webkit-scrollbar{
 .flashProduct-name{
     color: var(--primary);
     width: max-content;
-    font-size: 30px;
+    font-size: clamp(20px, 5vw, 30px);
     margin: 0px 5px;
 }
 .flashProduct-brand{
