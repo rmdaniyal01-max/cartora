@@ -218,7 +218,7 @@ body::-webkit-scrollbar{
 
 #hero-heading{
     color: var(--background);
-    font-size: clamp(30px, 50px, 50px);
+    font-size: clamp(30px, 5vw, 50px);
     font-weight: bolder;
     width: max-content;
     max-width: 550px;
@@ -412,7 +412,7 @@ body::-webkit-scrollbar{
     background-color: var(--primary);
     width: 80px;
     height: 2px;
-    margin: 0px 0px 20px 0px;
+    margin: 0px;
 }
 #featured-content{
     display: flex;
@@ -708,6 +708,74 @@ body::-webkit-scrollbar{
     box-shadow: 1px 1px 5px gray;
 }
 
+#statistics-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+    padding: 5px;
+}
+#statistics-contentContainer{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    width: 80%;
+}
+#statistics-spanline{
+    background-color: var(--primary);
+    width: 80px;
+    height: 2px;
+    margin: 0px;
+}
+
+#statistics-content{
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1, 1;
+    gap: 10px;
+}
+
+
+.statistics{
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px lightgray;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.S-icons{
+    fill: blue;
+    background-color: rgb(221, 236, 248);
+    width: 35px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.S-heading{
+    width: max-content;
+    margin: 0px;
+    font-size: clamp(10px, 4vw, 20px);
+}
+
+.S-paragraph{
+    width: max-content;
+    padding: 10px 0px;
+    margin: 0px;
+    font-size: clamp(10px, 4vw, 20px);
+    max-width: clamp(130px,5vw, 130px);
+    color: grey;
+}
+
 
 footer{
     margin: 30px 0px 0px 0px;
@@ -848,5 +916,11 @@ footer p{
     .flashProduct-details{
         width: 240px;
         height: auto;
+    }
+    #statistics-content{
+        grid-template-columns: 1fr;
+    }
+    .S-icons{
+        width: clamp(20px, 5vw, 35px);
     }
 }
