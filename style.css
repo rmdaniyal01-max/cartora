@@ -33,6 +33,12 @@ body::-webkit-scrollbar{
     width: 80%;
     padding: 5px;
 }
+.section-spanline{
+    background-color: var(--primary);
+    width: 80px;
+    height: 2px;
+    margin: 0px;
+}
 /*header section*/
 
 #header{
@@ -333,13 +339,6 @@ body::-webkit-scrollbar{
 
 /*categories section*/
 
-#categories-spanline{
-    background-color: var(--primary);
-    width: 50px;
-    height: 2px;
-    margin: 0px 0px 20px 0px;
-}
-
 #categories-content{
     display: flex;
     flex-wrap: wrap;
@@ -393,20 +392,6 @@ body::-webkit-scrollbar{
 
 /*featured product section*/
 
-#featured-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    margin: 20px 0px;
-}
-
-#featured-spanline{
-    background-color: var(--primary);
-    width: 80px;
-    height: 2px;
-    margin: 0px;
-}
 #featured-content{
     display: flex;
     flex-wrap: wrap;
@@ -613,7 +598,7 @@ body::-webkit-scrollbar{
     display: flex;
     flex-direction: column;
     align-content: center;
-    padding: 5px;
+    padding: 10px;
     width: 80%;
     height: 240px;
 }
@@ -667,13 +652,15 @@ body::-webkit-scrollbar{
 .flash-progressFill{
     padding: 5px;
     border-radius: 20px;
-    animation: progressfill 1s linear forwards;
+    animation: progressfill 2.5s linear forwards;
 }
 @keyframes progressfill{
     from{
+        background: var(--primary);
         width: 0%;
     }
     to{
+        background: var(--secondary);
         width: 80%;
     }
 }
@@ -694,15 +681,11 @@ body::-webkit-scrollbar{
     transform: translateY(-2px);
     box-shadow: 1px 1px 5px gray;
 }
+.flashProduct-button:active{
+    transform: scale(.99);
+}
 
 /*statistics Section*/
-
-#statistics-spanline{
-    background-color: var(--primary);
-    width: 80px;
-    height: 2px;
-    margin: 0px;
-}
 
 #statistics-content{
     width: 100%;
@@ -714,15 +697,22 @@ body::-webkit-scrollbar{
 }
 
 
-.statistics{
-    border: 1px solid rgb(194, 194, 194);
+.statistics-card{
+    border: 1px solid rgb(223, 223, 223);
     border-radius: 10px;
-    box-shadow: 2px 2px 10px lightgray;
+    box-shadow: 2px 2px 10px rgba(190, 190, 190, 0.705);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 10px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    padding: 15px 20px;
     gap: 10px;
+}
+.statistics-card:hover{
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 0 15px rgb(190, 190, 190)
 }
 
 .S-icons{
@@ -730,21 +720,24 @@ body::-webkit-scrollbar{
     background-color: rgb(221, 236, 248);
     width: 35px;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 100%;
 }
 
 .S-heading{
-    width: max-content;
+    padding: 10px 0px 0px 0px;
     margin: 0px;
-    font-size: 20px;
+    font-size: 18px;
+    width: 150px;
+    height: 30px;
+    color: var(--text);
 }
 
 .S-paragraph{
-    width: max-content;
-    padding: 10px 0px;
+    padding: 10px 0px 0px  0px;
     margin: 0px;
     font-size: 15px;
-    max-width: 150px;
+    width: 150px;
+    height: 50px;
     color: grey;
 }
 
@@ -813,7 +806,7 @@ footer p{
         display: none;
     }
     #hero-section{
-        padding: 80px 0px;
+        padding: 100px 0px;
         min-height: 100dvh;
     }
 
