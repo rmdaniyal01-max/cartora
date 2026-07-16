@@ -183,12 +183,12 @@ body::-webkit-scrollbar{
     position: relative;
     justify-content: center;
     align-items: center;
-    bottom: 60px;
+    margin: -70px 0px 0px 0px;
     padding: 10px;
     height: clamp(50dvh, 100dvh, 100dvh);
     width: clamp(50dvw, 100dvw, 100dvw);
     transform-origin: top;
-    animation: fadeIn 2s ease-in forwards;
+    animation: fadeIn 2s ease-in-out forwards;
 }
 #hero-contentContainer{
     display: flex;
