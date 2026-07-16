@@ -454,12 +454,11 @@ body::-webkit-scrollbar{
     width: 25px;
     margin: 5px 5px;
     z-index: 10;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 .product-wishlistIcon:hover{
     fill: var(--accent);
     transform: scale(1.5);
-    transition: 0.3s;
 }
 .product-wishlistIcon:active{
     transform: scale(.95);
@@ -472,11 +471,10 @@ body::-webkit-scrollbar{
 .product-image img{
     width: 250px;
     height: 250px;
-    transition: 0.3s;
+    transition: 0.3 ease;
 }
 .featured-Cards:hover img{
     transform: scale(1.05);
-    transition: 0.3s;
 }
 .product-name{
     color: var(--primary);
