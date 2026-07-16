@@ -31,7 +31,7 @@ body::-webkit-scrollbar{
     align-self: center;
     justify-content: space-evenly;
     position: sticky;
-    top: 00;
+    top: 10px;
     left: 00;
     right: 00;
     z-index: 1000;
@@ -47,7 +47,7 @@ body::-webkit-scrollbar{
         opacity: 0;
     }
     to{
-       transform: translate(0, 10px);
+       transform: translate(0, 0px);
         opacity: 1;
     }
 }
