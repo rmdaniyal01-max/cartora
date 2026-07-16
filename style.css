@@ -27,7 +27,6 @@ body::-webkit-scrollbar{
     padding: 5px;
 }
 .Container{
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,7 +162,7 @@ body::-webkit-scrollbar{
 }
 .cart-icon{
     fill: var(--accent);
-    width: clamp(15px, 5vw, 20px);
+    width: clamp(20px, 5vw, 25px);
 }
 .cart-icon:hover{
     fill: var(--primary);
@@ -175,7 +174,7 @@ body::-webkit-scrollbar{
 
 .profile-icon{
     fill: var(--accent);
-    width: clamp(15px, 5vw, 20px);
+    width: clamp(20px, 5vw, 25px);
 }
 .profile-icon:hover{
     fill: var(--primary);
@@ -621,7 +620,7 @@ body::-webkit-scrollbar{
 .flashProduct-name{
     color: var(--primary);
     width: max-content;
-    font-size: clamp(20px, 5vw, 30px);
+    font-size: clamp(15px, 5vw, 20px);
     margin: 0px 5px;
 }
 .flashProduct-brand{
@@ -666,10 +665,17 @@ body::-webkit-scrollbar{
 }
 
 .flash-progressFill{
-    background-color: var(--secondary);
-    width: 80%;
     padding: 5px;
     border-radius: 20px;
+    animation: progressfill 1s linear forwards;
+}
+@keyframes progressfill{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 80%;
+    }
 }
 
 .flashProduct-button{
@@ -699,7 +705,6 @@ body::-webkit-scrollbar{
 }
 
 #statistics-content{
-    border: 1px solid black;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -872,9 +877,15 @@ footer p{
         font-size: 25px;
         margin: 20px 0px 5px 0px;
     }
+    #flash-content{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
 
     .flash-Cards{
         flex-direction: column;
+        width: max-content;
     }
     .flashProduct-details{
         width: 240px;
