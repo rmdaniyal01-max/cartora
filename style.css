@@ -741,9 +741,95 @@ body::-webkit-scrollbar{
     color: grey;
 }
 
+/*customer reviews section*/
+#Customer-content{
+    display: grid;
+    width: clamp(70%, 100vw, 100%);
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    padding: 5px;
+    gap: 30px;
+}
+.Customer-contentBox{
+    box-shadow: 2px 3px 10px rgba(0,0,0,.3);
+    border-radius: 10px;
+    padding: 10px;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+.Customer-contentBox:hover{
+    box-shadow: 2px 3px 20px rgba(0,0,0,.4);
+    transform: scale(1.005);
+}
+.Customer-info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.Customer-image{
+    width: 50px;
+    height: 50px;
+}
+.Customer-name{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 5px 0px;
+}
+.Customer-verification{
+    color: var(--secondary);
+    font-size: 12px;
+    font-weight: 600;
+    margin: 5px 0px;
+}
+.Customer-ratings{
+    color: var(--primary);
+    font-size: 10px;
+    margin: 5px 0px;
+}
+.Customer-reviews{
+    color: var(--text);
+    font-size: clamp(12px, 3vw, 15px);
+    font-weight: 600;
+    width: clamp(150px, 30vw, 300px);
+    height: clamp(50px , 10vh, 75px);
+}
+
+/*NEWSLETTER SECTION*/
+
+#newsletter-section{
+    background: linear-gradient(to top, black, darkblue, blue);
+    margin-bottom: 0px;
+}
+#newsletter-content{
+    
+    border-radius: 10px;
+    padding: 10px;
+}
+#newsletter-icon{
+    background-color: white;
+    border-radius: 100%;
+    width: 50px;
+    padding: 5px;
+    fill: var(--primary);
+}
+#newsletter-heading{
+    color: var(--background);
+    padding: 5px;
+}
+#newsletter-description{
+    color: var(--background);
+    padding: 5px;
+}
+#email-input{
+    border: 1px solid white;
+    background: transparent;
+    padding: 5px;
+    width: 300px;
+    color: white;
+}
+
 /*footer Section*/
 footer{
-    margin: 30px 0px 0px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
