@@ -5,7 +5,7 @@
     --text:#1F2937;
     --background:#F8FAFC;
 }
-html body{
+html{
     scroll-behavior: smooth;
 }
 
@@ -797,15 +797,22 @@ body::-webkit-scrollbar{
 /*NEWSLETTER SECTION*/
 
 #newsletter-section{
-    background: linear-gradient(to top, black, darkblue, blue);
-    margin-bottom: 0px;
+    background: url(images/newsletter.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -300px;
 }
 #newsletter-content{
-    
+    display: flex;
+    flex-direction: column;
+    background: #1f29376c;
+    border: 1px solid black;
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 10px;
 }
 #newsletter-icon{
+    align-self: center;
     background-color: white;
     border-radius: 100%;
     width: 50px;
@@ -813,19 +820,49 @@ body::-webkit-scrollbar{
     fill: var(--primary);
 }
 #newsletter-heading{
+    align-self: center;
     color: var(--background);
     padding: 5px;
+}
+#newsletter-heading span{
+    color: var(--primary);
 }
 #newsletter-description{
     color: var(--background);
     padding: 5px;
 }
-#email-input{
+
+#sub-form{
+    display: flex;
+    gap: 20px;
+}
+#subEmail-input{
+    display: inline-block;
     border: 1px solid white;
     background: transparent;
     padding: 5px;
     width: 300px;
     color: white;
+}
+#subEmail-input:focus{
+    outline: none;
+}
+#sub-button{
+    display: inline-block;
+    color: var(--text);
+    background-color: var(--primary);
+    border: none;
+    padding: 5px 25px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+#sub-button:hover{
+    transform: scale(1.05);
+}
+#sub-button:active{
+    transform: scale(.95);
 }
 
 /*footer Section*/
