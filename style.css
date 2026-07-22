@@ -850,7 +850,6 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 #subEmail-input{
-    display: inline-block;
     border: 1px solid white;
     background: transparent;
     padding: 10px 5px;
@@ -861,7 +860,6 @@ body::-webkit-scrollbar{
     outline: none;
 }
 #sub-button{
-    display: inline-block;
     color: var(--text);
     background-color: var(--primary);
     border: none;
@@ -881,14 +879,19 @@ body::-webkit-scrollbar{
 /*footer Section*/
 footer{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    padding: 50px 0px;
+    background-color: var(--text);
+    padding: 10px 0px;
 }
-footer p{
-    color: white;
+#footer-section{
+    width: 100%;
+    margin: 0px;
+    border: 1px solid white;
+}
+#footer-container{
+    border: 1px solid white;
+}
+#brand-description{
+    border: 1px solid white;
 }
 
 @media (max-width: 768px){
@@ -1023,5 +1026,17 @@ footer p{
     #statistics-content{
         align-items: center;
         justify-content: center;
+    }
+    #newsletter-section{
+        background: linear-gradient(to top, black, darkblue, blue);
+    }
+    #newsletter-content{
+        width: 90dvw;
+    }
+    #sub-form{
+        flex-direction: column;
+    }
+    #sub-button{
+        width: 100%;
     }
 }
