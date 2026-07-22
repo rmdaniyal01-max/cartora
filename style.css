@@ -133,22 +133,32 @@ body::-webkit-scrollbar{
 }
 
 #nav-links a{
+    position: relative;
     color: var(--accent);
     text-decoration: none;
     font-size: clamp(15px, 1vw, 20px);
     font-weight: 700;
     padding: 5px 20px 15px 20px;
 }
+#nav-links a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s ease;
+}
 
-
-#nav-links a:hover{
-    color: var(--primary);
-    border-bottom: 2px solid var(--accent);
+#nav-links a:hover::after{
+    transform: scaleX(1);
 }
 
 #nav-links a.active{
     color: var(--primary);
-    border-bottom: 2px solid var(--primary);
 }
 
 #navIcons-cart-profile{
@@ -800,13 +810,14 @@ body::-webkit-scrollbar{
     background: url(images/newsletter.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position-y: -300px;
+    background-position-y: -400px;
+    padding: 30px 0px;
 }
 #newsletter-content{
     display: flex;
     flex-direction: column;
     background: #1f29376c;
-    border: 1px solid black;
+    border: 1px solid white;
     backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 10px;
@@ -835,12 +846,14 @@ body::-webkit-scrollbar{
 #sub-form{
     display: flex;
     gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 #subEmail-input{
     display: inline-block;
     border: 1px solid white;
     background: transparent;
-    padding: 5px;
+    padding: 10px 5px;
     width: 300px;
     color: white;
 }
@@ -852,7 +865,7 @@ body::-webkit-scrollbar{
     color: var(--text);
     background-color: var(--primary);
     border: none;
-    padding: 5px 25px;
+    padding: 10px 25px;
     border-radius: 5px;
     font-size: 15px;
     font-weight: 700;
