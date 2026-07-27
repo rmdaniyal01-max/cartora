@@ -794,7 +794,7 @@ body::-webkit-scrollbar{
 /*NEWSLETTER SECTION*/
 
 #newsletter-section{
-    background: url(images/newsletter.jpg);
+    background: url(images/newsletter.webp);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: -400px;
@@ -1017,7 +1017,8 @@ footer{
     margin: 0px;
 }
 #footer-bottomContainer{
-    flex-direction: row;justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-evenly;
 
 }
 #footer-bottomContainer p{
@@ -1168,156 +1169,65 @@ footer{
     #sub-form{
         flex-direction: column;
     }
+    #subEmail-input{
+        width: 100%;
+    }
     #sub-button{
         width: 100%;
     }
-    /*footer Section*/
-    footer{
-        background-color: var(--text);
-        padding: 10px 0px;
-        margin: 0px;
-    }
     #footer-topContainer{
-        border: 1px solid red;
-        flex-direction: column;
-        align-items: start;
-        margin: 5px 0px;
-        padding: 5px 0px;
-        width: auto;
-    }
-    #brand-logo{
-        width: 130px;
-    }
-    .footer-content{
-        width: auto;
-        height: auto;
-        padding: 5px;
-        margin: 5px;
-    }
-    #brand-description{
-        color: lightgray;
-        width: auto;
-        font-size: 15px;
+        border: 1px solid white;
+        display: grid;
+        width: clamp(70%, 100vw, 100%);
+        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     }
     .socials{
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        gap: 10px;
+        width: 90%;
+        justify-content: space-evenly;
     }
-    .socials a{
-        text-decoration: none;
+    .footer-content{
+        border: 1px solid orange;
+        width: 90%;
     }
-    .social-icons{
-        background-color: rgba(211, 211, 211, 0.2);
-        border-radius: 50%;
-        width: 15px;
-        padding: 5px;
-        transition: 0.3s ease;
-    }
-    .social-icons:hover{
-        background-color: gray;
-        transform: translateY(-5px) scale(1.15);
-    }
-
     .footer-heading{
-        font-size: 15px;
-        color: lightgray;
-        margin: 5px 0px;
+        width: max-content;
     }
     .footer-spanline{
-        border:1px solid blue;
+        align-self: flex-start;
+        width: 90%;
+        height: 0px;
     }
     #quick-links{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        border: 1px solid red;
-        height: auto;
-        margin-top: 10px;
+        width: max-content;
     }
-    #quick-links a{
-        font-size: 12px;
-    }
-
     .contact-info{
-        display: flex;
-        align-self: flex-start;
-        align-items: center;
-        justify-content: start;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    .contact-icon{
-        fill: var(--primary);
-        width: 10px;
-        height: 10px;
-        padding: 5px;
-        border: 2px solid var(--primary);
-        border-radius: 50%;
-        transition: .3s ease;
-    }
-    .contact-number{
-        text-decoration: none;
-        color: white;
-        font-size: 8px;
-        margin: 5px 0px;
-        transition: .3s ease;
-    }
-    
-    .contact-timings{
-        color: gray;
-        font-size: 8px;
-        margin: 5px 0px; 
-    }
-    #footer-middleSection{
-        border-top: 1px solid gray;
-        border-bottom: 1px solid gray;
+        width: max-content;
     }
     #footer-middleContainer{
-        width: 100%;
-    }
-    .footer-StatisticsInfo{
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        gap: 10px;
-        margin: 20px 0px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 95%;
+        border: 1px solid white;
     }
     .StatisticsInfo-icon{
-        fill: var(--primary);
-        width: 15px;
-        padding: 5px;
-        border-radius: 50%;
-        transition: .3s ease;
+        width: 30px;
     }
     
     .StatisticsInfo-heading{
         text-decoration: none;
         color: white;
-        font-size: 8px;
+        font-size: 12px;
         margin: 5px 0px;
     }
     .StatisticsInfo-mono{
         color: gray;
-        font-size: 8px;
+        font-size: 12px;
         margin: 5px 0px; 
     }
     .seperation-line{
-        width: 0px;
-        height: 30px;
-        border: 1px solid gray;
-    }
-    #footer-bottomSection{
-        background-color: #10161f;
-        margin: 0px;
-    }
-    #footer-bottomContainer{
-        flex-direction: row;justify-content: space-around;
-
+        display: none;
     }
     #footer-bottomContainer p{
-        color: gray;
-        font-weight: bold;
         font-size: 10px;
     }
 }
