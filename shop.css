@@ -29,7 +29,7 @@ body::-webkit-scrollbar{
     align-self: center;
     justify-content: space-evenly;
     position: sticky;
-    top: 00;
+    top: 5px;
     left: 00;
     right: 00;
     z-index: 1000;

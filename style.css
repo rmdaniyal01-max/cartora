@@ -94,7 +94,7 @@ body::-webkit-scrollbar{
     align-self: center;
     justify-content: space-evenly;
     position: sticky;
-    top: 00;
+    top: 5px;
     left: 00;
     right: 00;
     z-index: 1000;
@@ -1128,13 +1128,13 @@ footer{
         display: none;
     }
     #hero-section{
-        padding: 100px 0px;
+        padding: 40px 0px;
         min-height: 100dvh;
     }
 
     #hero-Container{
         flex-direction: column;
-        gap: 40px;
+        gap: 20px;
     }
     #hero-content{
         width: auto;
@@ -1145,18 +1145,21 @@ footer{
     #hero-heading{
         font-size: 25px;
         max-width: 250px;
-        margin: 10px 0px 30px 0px;
+        margin: 10px 0px 10px 0px;
     }
     #hero-description{
-        font-size: clamp(10px, 3vw, 20px);
+        font-size: clamp(10px, 2vw, 20px);
         margin: 10px 0px;
 
     }
     #heroButton1{
-        font-size: 12px;
+        font-size: clamp(10px, 2vw, 20px);
     }
     #heroButton2{
-        font-size: 12px;
+        font-size: clamp(10px, 2vw, 20px);
+    }
+    #trust-badge{
+        font-size: clamp(10px, 2vw, 20px);
     }
     
     #hero-image{
@@ -1164,7 +1167,7 @@ footer{
     }
 
     #heroFeatured-image{
-        width: 320px;
+        width: clamp(300px, 20dvw, 400px);
     }
 
     #categories-content{
