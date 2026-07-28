@@ -233,7 +233,7 @@ body::-webkit-scrollbar{
     overflow: hidden;
 }
 #hero-image img{
-    width: 600px;
+    width: 500px;
 }
 #hero-trustCard{
     display: flex;
