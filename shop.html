@@ -97,7 +97,7 @@
                         <a href="#" id="view-details">View Details &rarr;</a>
                     </div>
                     <div id="hero-image">
-                        <img src="images/shop-hero.png" alt="Featured-Image" width="600px">
+                        <img src="images/shop-hero.png" alt="Featured-Image" width="400px">
                     </div>
                 </div>
                 <div id="hero-trustCard2">
@@ -144,6 +144,50 @@
                             <p class="trustCard2-mono">Customer Ratings</p>
                         </div>
                     </div>
+                </div>
+            </section>
+            <section id="search-Section">
+                <div id="search-Container">
+                    <input type="text" id="search-input" placeholder="Search Products...">
+                    <button type="button" id="search-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" id="search-icon">
+                        <path d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"/></svg>
+                    </button>
+                </div>
+                <div id="filterbar">
+                    <select name="All Categories" class="filter-menu">
+                        <option value="" disabled selected>All Categories</option>
+                        <option value="">Electronics</option>
+                        <option value="">Fashion</option>
+                        <option value="">Home & Living</option>
+                        <option value="">Beauty</option>
+                        <option value="">Sports</option>
+                        <option value="">Books</option>
+                        <option value="">Automotive</option>
+                    </select>
+                    <select name="All Prices" class="filter-menu">
+                        <option value="" disabled selected>All Prices</option>
+                        <option value="0-10000">Under Rs:10K</option>
+                        <option value="10000-50000">Rs:10K to 50K</option>
+                        <option value="50000-100000">Rs:50K to 100K</option>
+                        <option value="100000-150000">Rs:100K to 150K</option>
+                        <option value="150000-200000">Rs:150K to 200K</option>
+                        <option value="200000+">Above Rs:200K</option>
+                    </select>
+                    <select name="All Ratings" class="filter-menu">
+                        <option value="" disabled selected>All Ratings</option>
+                        <option value="">⭐⭐⭐⭐⭐</option>
+                        <option value="">⭐⭐⭐⭐☆</option>
+                        <option value="">⭐⭐⭐☆☆</option>
+                    </select>
+                    <select name="Sort By" class="filter-menu">
+                        <option value="" disabled selected>Sort By</option>
+                        <option value="">Featured</option>
+                        <option value="">Newest</option>
+                        <option value="">Highest Rated</option>
+                        <option value="">Price: High → Low</option>
+                        <option value="">Price: Low → High</option>
+                    </select>
+                    <button>Reset Filters</button>
                 </div>
             </section>
         </main>
