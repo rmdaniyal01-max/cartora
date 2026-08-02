@@ -2,6 +2,7 @@ const productsContainer = document.getElementById("products-Container");
 const searchInput = document.getElementById("search-input");
 
 function renderProducts(productList) {
+    productsContainer.innerHTML = ""
     productList.forEach(product =>  {
         productsContainer.innerHTML += `
             <div class="products-Cards">
@@ -19,17 +20,15 @@ function renderProducts(productList) {
             </div>
         `;
     });
-    
 }
 
 
 searchInput.addEventListener("input", () => {
-    productsContainer.innerHTML = ""
     const searchText = searchInput.value
-    const filterdProducts = productList.filter(product => product.badge .includes(searchText) || product.name .includes(searchText) || product.brand .includes
-    (searchText) || product.category .includes(searchText));
+    const filterdProducts = productList.filter(product => product.badge.toLowerCase() .includes(searchText.toLowerCase()) ||
+     product.name.toLowerCase() .includes(searchText.toLowerCase()) || product.brand.toLowerCase() .includes(searchText.toLowerCase()) ||
+     product.category.toLowerCase() .includes(searchText.toLowerCase()));
     renderProducts(filterdProducts)
-    console.log(searchInput.value)
 })
 
 renderProducts(productList);
