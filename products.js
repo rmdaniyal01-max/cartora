@@ -3,7 +3,7 @@ let navLinks = document.getElementById("nav-links");
 
 menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
 
-let products =[
+let productList =[
     {
         id: 1,
         name: "Sony WH-1000XM5",
@@ -14,7 +14,7 @@ let products =[
         rating: 4.8,
         reviews: 124,
         badge: "-10%",
-        image: "images/sony.webp"
+        image: "images/headphones.webp"
     },
     {
         id: 2,
@@ -26,7 +26,7 @@ let products =[
         rating: 4.8,
         reviews: 87,
         badge: "HOT",
-        image: "images/watch.webp"
+        image: "images/smartwatch.webp"
     },
     {
         id: 3,
@@ -54,7 +54,7 @@ let products =[
     },
     {
         id: 5,
-        name: "ASUS TUF GAMING F15",
+        name: "Asus Tuff Gaming F15",
         brand: "Asus",
         category: "Electronics",
         price: 368999,
@@ -62,7 +62,7 @@ let products =[
         rating: 4.9,
         reviews: 87,
         badge: "Trending",
-        image: "images/laptop.webp"
+        image: "images/asus-laptop.webp"
     },
     {
         id: 6,
@@ -100,5 +100,6 @@ let products =[
         badge: "NEW",
         image: "images/samsung-TV.webp"
     }
+];
 
-]
+productList.push();

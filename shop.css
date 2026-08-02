@@ -441,16 +441,16 @@ body::-webkit-scrollbar{
 #filterbar button:active{
     transform: scale(.98);
 }
-/*featured product section*/
+/*Product section*/
 
-#featured-content{
+#products-Container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
     place-items: center;
     width: 100%;
     gap: 20px 0px;
 }
-.featured-Cards{
+.products-Cards{
     width: 250px;
     height: 460px;
     box-shadow: 2px 2px 10px gray;
@@ -458,7 +458,7 @@ body::-webkit-scrollbar{
     overflow: hidden;
     transition: 0.2s;
 }
-.featured-Cards:hover{
+.products-Cards:hover{
     transform: translateY(-2px);
     box-shadow: 1px 1px 20px rgb(184, 183, 183);
     transition: 0.2s;
@@ -502,7 +502,7 @@ body::-webkit-scrollbar{
     height: 250px;
     transition: 0.3 ease;
 }
-.featured-Cards:hover img{
+.products-Cards:hover img{
     transform: scale(1.05);
 }
 .product-name{
