@@ -4,6 +4,7 @@ const categorySelect = document.getElementById("categories");
 const priceSelect = document.getElementById("prices");
 const ratingSelect = document.getElementById("ratings");
 const sortSelect = document.getElementById("sort");
+const resetFilterButton = document.getElementById("filter-resetbButton")
 
 const filters = {
     search: "",
@@ -26,31 +27,34 @@ function renderProducts(productList) {
                 </div>
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-brand">${product.brand}</p>
-                <p class="product-rating">Ratings: ⭐⭐⭐⭐⭐ (${product.rating})</p>
+                <p class="product-rating">Ratings: ${product.rating}/5</p>
                 <p class="product-price">Rs: <ins>${product.price}</ins></p><p class="original-price">Rs: <del>${product.oldPrice}</del></p>
                 <button class="product-button"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
             </div>
         `;
     });
 }
-renderProducts(productList);
-
+applyFilters();
 searchInput.addEventListener("input", () => {
     filters.search = searchInput.value;
-    applyFilters()
+    applyFilters();
 })
 categorySelect.addEventListener("change", () => {
-    filters.category = categorySelect.value
-    applyFilters()
+    filters.category = categorySelect.value;
+    applyFilters();
 });
 priceSelect.addEventListener("change", () => {
-    filters.price = priceSelect.value
-    applyFilters()
+    filters.price = priceSelect.value;
+    applyFilters();
 });
 ratingSelect.addEventListener("change", () => {
-  filters.rating = ratingSelect.value
-  applyFilters()
+  filters.rating = ratingSelect.value;
+  applyFilters();
 });
+sortSelect.addEventListener("change", () => {
+    filters.sort = sortSelect.value;
+    applyFilters();
+})
 function applyFilters(){
 
     let filteredProducts = productList;
@@ -78,5 +82,28 @@ function applyFilters(){
         const maximum = Number(minMax[1]);
         filteredProducts = filteredProducts.filter(product => product.rating >= minimum && product.rating <= maximum);
     }
+
+    if(filters.sort === "Price: Low → High"){
+        filteredProducts.sort((a, b) => a.price - b.price);
+    }
+    if(filters.sort === "Price: High → Low"){
+        filteredProducts.sort((a, b) => b.price - a.price);
+    }
+    if(filters.sort === "Highest Rated"){
+        filteredProducts.sort((a, b) => b.rating - a.rating);
+    }
+    if(filters.sort === "Newest"){
+        filteredProducts.sort((a, b) => b.id - a.id);
+    }
+
     renderProducts(filteredProducts);
 };
+
+resetFilterButton.addEventListener("click", () => {
+    searchInput.value = "";
+    categorySelect.value = "All Categories";
+    priceSelect.value = "All Prices";
+    ratingSelect.value = "All Ratings"
+    sortSelect.value = "Sort By";
+    applyFilters();
+});
