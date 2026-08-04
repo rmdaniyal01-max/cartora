@@ -35,7 +35,7 @@ let productList =[
         category: "Fashion",
         price: 33000,
         oldPrice: 34000,
-        rating: 4.8,
+        rating: 4,
         reviews: 87,
         badge: "BEST SELLER",
         image: "images/shoes.webp"
@@ -47,7 +47,7 @@ let productList =[
         category: "Electronics",
         price: 40000,
         oldPrice: 42000,
-        rating: 4.8,
+        rating: 3.9,
         reviews: 87,
         badge: "NEW",
         image: "images/keyboard.webp"
@@ -95,7 +95,7 @@ let productList =[
         category: "Electronics",
         price: 86999,
         oldPrice: 80000,
-        rating: 4.9,
+        rating: 2,
         reviews: 87,
         badge: "NEW",
         image: "images/samsung-TV.webp"

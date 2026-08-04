@@ -1,6 +1,6 @@
 const productsContainer = document.getElementById("products-Container");
 const searchInput = document.getElementById("search-input");
-const categorieSelect = document.getElementById("categories");
+const categorySelect = document.getElementById("categories");
 const priceSelect = document.getElementById("prices");
 const ratingSelect = document.getElementById("ratings");
 const sortSelect = document.getElementById("sort");
@@ -30,37 +30,46 @@ function renderProducts(productList) {
 searchInput.addEventListener("input", () => {
     const searchText = searchInput.value;
     const easySearch = searchText.toLowerCase();
-    const filterdProducts = productList.filter(product => product.badge.toLowerCase() .includes(easySearch) ||
+    const filteredProducts = productList.filter(product => product.badge.toLowerCase() .includes(easySearch) ||
      product.name.toLowerCase() .includes(easySearch) || product.brand.toLowerCase() .includes(easySearch) ||
      product.category.toLowerCase() .includes(easySearch));
-    renderProducts(filterdProducts);
+    renderProducts(filteredProducts);
 })
 
-categorieSelect.addEventListener("change", () => {
-    const searchCategories = categorieSelect.value;
-    const filterdCategories = productList.filter(product => product.category === searchCategories);
-    renderProducts(filterdCategories);
+categorySelect.addEventListener("change", () => {
+    const searchCategories = categorySelect.value;
     if(searchCategories === "All Categories"){
         renderProducts(productList);
-    };
+    }
+    else {const filteredCategories = productList.filter(product => product.category === searchCategories);
+    renderProducts(filteredCategories)};
+    
 });
 
 priceSelect.addEventListener("change", () => {
     const searchPrices = priceSelect.value;
-    const filterdPrices = productList.filter(product => product.price <= searchPrices);
-    renderProducts(filterdPrices);
+    const minMax = searchPrices.split("-");
+    const minimum = Number(minMax[0]);
+    const maximum = Number(minMax[1]);
     if(searchPrices === "All Prices"){
         renderProducts(productList);
-    };
+    }
+    else{const filteredPrices = productList.filter(product => product.price >= minimum && product.price <= maximum);
+    renderProducts(filteredPrices);}
+    
 });
 
 ratingSelect.addEventListener("change", () => {
     const searchRatings = ratingSelect.value;
-    const filterdRatings = productList.filter(product => product.rating <= searchRatings);
-    renderProducts(filterdRatings);
+    const minMax = searchRatings.split("-");
+    const minimum = Number(minMax[0]);
+    const maximum = Number(minMax[1]);
     if(searchRatings === "All Ratings"){
         renderProducts(productList);
-    };
-})
+    }
+    else{const filteredRatings = productList.filter(product => product.rating >= minimum && product.rating <= maximum);
+    renderProducts(filteredRatings);}
+    
+});
 
 renderProducts(productList);
