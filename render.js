@@ -1,5 +1,9 @@
 const productsContainer = document.getElementById("products-Container");
 const searchInput = document.getElementById("search-input");
+const categorieSelect = document.getElementById("categories");
+const priceSelect = document.getElementById("prices");
+const ratingSelect = document.getElementById("ratings");
+const sortSelect = document.getElementById("sort");
 
 function renderProducts(productList) {
     productsContainer.innerHTML = ""
@@ -24,11 +28,39 @@ function renderProducts(productList) {
 
 
 searchInput.addEventListener("input", () => {
-    const searchText = searchInput.value
-    const filterdProducts = productList.filter(product => product.badge.toLowerCase() .includes(searchText.toLowerCase()) ||
-     product.name.toLowerCase() .includes(searchText.toLowerCase()) || product.brand.toLowerCase() .includes(searchText.toLowerCase()) ||
-     product.category.toLowerCase() .includes(searchText.toLowerCase()));
-    renderProducts(filterdProducts)
+    const searchText = searchInput.value;
+    const easySearch = searchText.toLowerCase();
+    const filterdProducts = productList.filter(product => product.badge.toLowerCase() .includes(easySearch) ||
+     product.name.toLowerCase() .includes(easySearch) || product.brand.toLowerCase() .includes(easySearch) ||
+     product.category.toLowerCase() .includes(easySearch));
+    renderProducts(filterdProducts);
+})
+
+categorieSelect.addEventListener("change", () => {
+    const searchCategories = categorieSelect.value;
+    const filterdCategories = productList.filter(product => product.category === searchCategories);
+    renderProducts(filterdCategories);
+    if(searchCategories === "All Categories"){
+        renderProducts(productList);
+    };
+});
+
+priceSelect.addEventListener("change", () => {
+    const searchPrices = priceSelect.value;
+    const filterdPrices = productList.filter(product => product.price <= searchPrices);
+    renderProducts(filterdPrices);
+    if(searchPrices === "All Prices"){
+        renderProducts(productList);
+    };
+});
+
+ratingSelect.addEventListener("change", () => {
+    const searchRatings = ratingSelect.value;
+    const filterdRatings = productList.filter(product => product.rating <= searchRatings);
+    renderProducts(filterdRatings);
+    if(searchRatings === "All Ratings"){
+        renderProducts(productList);
+    };
 })
 
 renderProducts(productList);

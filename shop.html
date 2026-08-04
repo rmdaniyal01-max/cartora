@@ -156,18 +156,18 @@
                     </button>
                 </div>
                 <div id="filterbar">
-                    <select name="All Categories" class="filter-menu">
-                        <option value="" disabled selected>All Categories</option>
-                        <option value="">Electronics</option>
-                        <option value="">Fashion</option>
-                        <option value="">Home & Living</option>
-                        <option value="">Beauty</option>
-                        <option value="">Sports</option>
-                        <option value="">Books</option>
-                        <option value="">Automotive</option>
+                    <select name="All Categories" class="filter-menu" id="categories">
+                        <option value="All Categories" selected>All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Home & Living">Home & Living</option>
+                        <option value="Beauty">Beauty</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Books">Books</option>
+                        <option value="Automotive">Automotive</option>
                     </select>
-                    <select name="All Prices" class="filter-menu">
-                        <option value="" disabled selected>All Prices</option>
+                    <select name="All Prices" class="filter-menu" id="prices">
+                        <option value="All Prices" selected>All Prices</option>
                         <option value="0-10000">Under Rs:10K</option>
                         <option value="10000-50000">Rs:10K to 50K</option>
                         <option value="50000-100000">Rs:50K to 100K</option>
@@ -175,19 +175,18 @@
                         <option value="150000-200000">Rs:150K to 200K</option>
                         <option value="200000+">Above Rs:200K</option>
                     </select>
-                    <select name="All Ratings" class="filter-menu">
-                        <option value="" disabled selected>All Ratings</option>
-                        <option value="">⭐⭐⭐⭐⭐</option>
-                        <option value="">⭐⭐⭐⭐☆</option>
-                        <option value="">⭐⭐⭐☆☆</option>
+                    <select name="All Ratings" class="filter-menu" id="ratings">
+                        <option value="All Ratings"selected>All Ratings</option>
+                        <option value="5">4 to 5</option>
+                        <option value="4">3 to 4</option>
+                        <option value="3">below 3</option>
                     </select>
-                    <select name="Sort By" class="filter-menu">
-                        <option value="" disabled selected>Sort By</option>
-                        <option value="">Featured</option>
-                        <option value="">Newest</option>
-                        <option value="">Highest Rated</option>
-                        <option value="">Price: High → Low</option>
-                        <option value="">Price: Low → High</option>
+                    <select name="Sort By" class="filter-menu" id="sort">
+                        <option value="Sort By" selected>Sort By</option>
+                        <option value="Newest">Newest</option>
+                        <option value="Highest Rated">Highest Rated</option>
+                        <option value="Price: High → Low">Price: High → Low</option>
+                        <option value="Price: Low → High">Price: Low → High</option>
                     </select>
                     <button>Reset Filters</button>
                 </div>
@@ -232,7 +231,6 @@
         <footer>
             <section class="Section" id="footer-topSection">
                 <div class="Container" id="footer-topContainer">
-
                     <div class="footer-content">
                         <img src="images/Cartora-Logo.webp" alt="Brand-logo" id="brand-logo">
                         <p id="brand-description">
