@@ -57,7 +57,7 @@ sortSelect.addEventListener("change", () => {
 })
 function applyFilters(){
 
-    let filteredProducts = productList;
+    let filteredProducts = [...productList];
     if(filters.search !== ""){
         const normalizedSearch = filters.search.toLowerCase();
         filteredProducts = filteredProducts.filter(product => product.badge.toLowerCase() .includes(normalizedSearch) ||
@@ -105,5 +105,11 @@ resetFilterButton.addEventListener("click", () => {
     priceSelect.value = "All Prices";
     ratingSelect.value = "All Ratings"
     sortSelect.value = "Sort By";
+
+    filters.search= "";
+    filters.category= "All Categories";
+    filters.price= "All Prices";
+    filters.rating= "All Ratings";
+    filters.sort= "Sort By";
     applyFilters();
 });
