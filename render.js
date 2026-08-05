@@ -4,7 +4,15 @@ const categorySelect = document.getElementById("categories");
 const priceSelect = document.getElementById("prices");
 const ratingSelect = document.getElementById("ratings");
 const sortSelect = document.getElementById("sort");
-const resetFilterButton = document.getElementById("filter-resetbButton")
+const resetFilterButton = document.getElementById("filter-resetbButton");
+const paginationContainer = document.getElementById ("pagination");
+
+let currentPage = 1;
+let productsPerPage = 8;
+
+const startIndex = (currentPage - 1) * productsPerPage;
+const endIndex = startIndex  + productsPerPage;
+
 
 const filters = {
     search: "",
@@ -96,7 +104,24 @@ function applyFilters(){
         filteredProducts.sort((a, b) => b.id - a.id);
     }
 
-    renderProducts(filteredProducts);
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex  + productsPerPage;
+
+    const productsForCurrentPage = filteredProducts.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+    paginationContainer.innerHTML = ""
+    for(let i = 1; i <= totalPages; i++){
+        const pageButton = document.createElement("button");
+        pageButton.textContent = i;
+        pageButton.addEventListener("click", () => {
+            currentPage = i;
+            applyFilters();
+        })
+        paginationContainer.appendChild(pageButton);
+    }
+
+    renderProducts(productsForCurrentPage);
 };
 
 resetFilterButton.addEventListener("click", () => {
@@ -113,3 +138,5 @@ resetFilterButton.addEventListener("click", () => {
     filters.sort= "Sort By";
     applyFilters();
 });
+
+
