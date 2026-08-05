@@ -568,9 +568,10 @@ body::-webkit-scrollbar{
     box-shadow: 1px 1px 10px var(--primary);
     padding: 10px;
     border-radius: 20px;
-    width: 60%;
+    gap: 20px;
+    width: max-content;
 }
-.paginationContainer a{
+.paginationContainer button{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -581,21 +582,20 @@ body::-webkit-scrollbar{
     align-self: center;
     font-size: 25px;
     border-radius: 50%;
+    border: none;
     min-width: 30px;
     min-height: 30px;
     padding: 5px;
     cursor: pointer;
     transition: transform .3s ease, color .3s ease;
 }
-.paginationContainer a:hover{
+.paginationContainer button:hover{
     color: var(--accent);
     background: #fddcc4d7;
     transform: scale(1.3);
 }
-.paginationContainer .active{
-    background: var(--accent);
-    color: var(--background);
-    transform: scale(1.2);
+.paginationContainer button:active{
+    transform: scale(.95);
 }
 /*NEWSLETTER SECTION*/
 
