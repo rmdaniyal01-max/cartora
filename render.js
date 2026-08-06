@@ -6,13 +6,16 @@ const ratingSelect = document.getElementById("ratings");
 const sortSelect = document.getElementById("sort");
 const resetFilterButton = document.getElementById("filter-resetbButton");
 const paginationContainer = document.getElementById ("pagination");
+const previousButton = document.createElement("button");
+previousButton.textContent = "⫷"
+previousButton.classList.add("style");
+const nextButton = document.createElement("button");
+nextButton.textContent = "⫸"
+nextButton.classList.add("style");
 
 let currentPage = 1;
 let productsPerPage = 8;
-
-const startIndex = (currentPage - 1) * productsPerPage;
-const endIndex = startIndex  + productsPerPage;
-
+let totalPages = 1;
 
 const filters = {
     search: "",
@@ -51,7 +54,7 @@ categorySelect.addEventListener("change", () => {
     filters.category = categorySelect.value;
     applyFilters();
 });
-priceSelect.addEventListener("change", () => {
+priceSelect.addEventListener("change", () => { 
     filters.price = priceSelect.value;
     applyFilters();
 });
@@ -108,21 +111,62 @@ function applyFilters(){
     const endIndex = startIndex  + productsPerPage;
 
     const productsForCurrentPage = filteredProducts.slice(startIndex, endIndex);
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
-    paginationContainer.innerHTML = ""
+    if(currentPage > totalPages){
+        currentPage = totalPages;
+    };
+    if(totalPages === 0){
+        currentPage = 1;
+    };
+
+    paginationContainer.innerHTML = "";
+
+    paginationContainer.appendChild(previousButton);
+    if(currentPage === 1){
+        previousButton.disabled = true;
+    }else{
+        previousButton.disabled = false;
+    }
+
     for(let i = 1; i <= totalPages; i++){
         const pageButton = document.createElement("button");
         pageButton.textContent = i;
+
+        if(i === currentPage){
+            pageButton.classList.add("active")
+        };
+        
         pageButton.addEventListener("click", () => {
             currentPage = i;
             applyFilters();
-        })
+        });
+        
         paginationContainer.appendChild(pageButton);
-    }
+    };
 
+    paginationContainer.appendChild(nextButton);
+    if(currentPage === totalPages){
+        nextButton.disabled = true;
+    }else{
+        nextButton.disabled = false;
+    }
     renderProducts(productsForCurrentPage);
 };
+
+nextButton.addEventListener("click", () => {
+    if(currentPage < totalPages){
+        currentPage += 1;
+        applyFilters();
+    }
+})
+    
+previousButton.addEventListener("click", () => {
+    if(currentPage > 1){
+        currentPage -= 1;
+        applyFilters();
+    }
+})
 
 resetFilterButton.addEventListener("click", () => {
     searchInput.value = "";
