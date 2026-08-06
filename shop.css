@@ -23,7 +23,6 @@ body::-webkit-scrollbar{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px 0px;
     padding: 5px;
 }
 .Container{
@@ -275,7 +274,8 @@ body::-webkit-scrollbar{
     gap: 12px;
 }
 .trustCard-icon{
-    background: rgb(223, 223, 223);
+    background: black;
+    box-shadow: inset 1px 1px 5px var(--background);
     fill: var(--accent);
     border-radius: 50%;
     padding: 10px;
@@ -442,6 +442,14 @@ body::-webkit-scrollbar{
     transform: scale(.98);
 }
 /*Product section*/
+
+#info{
+    color: var(--primary);
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: bold;
+    margin-top: 0;
+    align-self: flex-start;
+}
 
 #products-Container{
     display: grid;
@@ -612,6 +620,10 @@ body::-webkit-scrollbar{
 .paginationContainer .style:active{
     transform: scale(.99);
     box-shadow: none;
+}
+.style:disabled{
+    opacity: .5;
+    cursor: not-allowed;
 }
 .paginationContainer .active{
     background: var(--accent);
@@ -1012,7 +1024,6 @@ footer{
     .paginationContainer{
         overflow-x: auto;
         gap: 10px;
-        width: 50%;
     }
     /*newsletter section*/
     #newsletter-content{
