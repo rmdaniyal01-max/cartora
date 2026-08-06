@@ -6,6 +6,7 @@ const ratingSelect = document.getElementById("ratings");
 const sortSelect = document.getElementById("sort");
 const resetFilterButton = document.getElementById("filter-resetbButton");
 const paginationContainer = document.getElementById ("pagination");
+const details = document.getElementById("info");
 const previousButton = document.createElement("button");
 previousButton.textContent = "⫷"
 previousButton.classList.add("style");
@@ -13,6 +14,9 @@ const nextButton = document.createElement("button");
 nextButton.textContent = "⫸"
 nextButton.classList.add("style");
 
+const visibleButtons = 5;
+const half = 2;
+const startPage = Math.max(1,visibleButtons - half);
 let currentPage = 1;
 let productsPerPage = 8;
 let totalPages = 1;
@@ -139,6 +143,10 @@ function applyFilters(){
         
         pageButton.addEventListener("click", () => {
             currentPage = i;
+            window.scrollTo({
+                top: 580,
+                behavior: "smooth",
+            })
             applyFilters();
         });
         
@@ -150,6 +158,12 @@ function applyFilters(){
         nextButton.disabled = true;
     }else{
         nextButton.disabled = false;
+    }
+    details.textContent = `Showing: ${startIndex + 1} - ${endIndex} of ${filteredProducts.length} Products.`
+    if(filteredProducts.length < 8){
+        details.textContent = `Showing: ${1} - ${filteredProducts.length} of ${filteredProducts.length} Products.`
+    }else if(filteredProducts.length === 0){
+        details.textContent = `No products found.`
     }
     renderProducts(productsForCurrentPage);
 };
