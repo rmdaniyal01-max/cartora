@@ -8,13 +8,13 @@ const resetFilterButton = document.getElementById("filter-resetbButton");
 const paginationContainer = document.getElementById ("pagination");
 const details = document.getElementById("info");
 const previousButton = document.createElement("button");
-previousButton.textContent = "⫷"
+previousButton.textContent = "◀"
 previousButton.classList.add("style");
 const nextButton = document.createElement("button");
-nextButton.textContent = "⫸"
+nextButton.textContent = "▶"
 nextButton.classList.add("style");
 
-const visibleButtons = 5;
+const visibleButtons = 5
 const half = 2;
 const startPage = Math.max(1,visibleButtons - half);
 let currentPage = 1;
