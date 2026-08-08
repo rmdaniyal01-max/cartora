@@ -1239,7 +1239,6 @@ footer{
     }
     /*footer section*/
     #footer-topContainer{
-        border: 1px solid white;
         display: grid;
         width: clamp(70%, 100vw, 100%);
         grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
@@ -1249,7 +1248,6 @@ footer{
         justify-content: space-evenly;
     }
     .footer-content{
-        border: 1px solid orange;
         width: 90%;
     }
     .footer-heading{
@@ -1270,7 +1268,6 @@ footer{
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 95%;
-        border: 1px solid white;
     }
     .StatisticsInfo-icon{
         width: 30px;
