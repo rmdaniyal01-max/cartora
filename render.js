@@ -171,6 +171,10 @@ function applyFilters(){
 nextButton.addEventListener("click", () => {
     if(currentPage < totalPages){
         currentPage += 1;
+        window.scrollTo({
+            top: 580,
+            behavior: "smooth",
+        })
         applyFilters();
     }
 })
@@ -178,6 +182,10 @@ nextButton.addEventListener("click", () => {
 previousButton.addEventListener("click", () => {
     if(currentPage > 1){
         currentPage -= 1;
+        window.scrollTo({
+            top: 580,
+            behavior: "smooth",
+        })
         applyFilters();
     }
 })
