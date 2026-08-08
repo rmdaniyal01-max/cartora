@@ -578,6 +578,7 @@ body::-webkit-scrollbar{
     border-radius: 20px;
     gap: 20px;
     width: max-content;
+    margin: 30px 0px;
 }
 .paginationContainer button{
     display: inline-flex;
