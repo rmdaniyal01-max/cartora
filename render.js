@@ -13,12 +13,8 @@ previousButton.classList.add("style");
 const nextButton = document.createElement("button");
 nextButton.textContent = "▶"
 nextButton.classList.add("style");
-
-const visibleButtons = 5
-const half = 2;
-const startPage = Math.max(1,visibleButtons - half);
 let currentPage = 1;
-let productsPerPage = 8;
+const productsPerPage = 8;
 let totalPages = 1;
 
 const filters = {
@@ -132,15 +128,21 @@ function applyFilters(){
     }else{
         previousButton.disabled = false;
     }
+    let visibleButtons = 5
+    let half = 2;
+    let startPage = Math.max(1,currentPage - half);
+    let endPage = Math.min(totalPages, startPage + visibleButtons - 1);
+    let missingButtons = visibleButtons - (endPage - startPage + 1);
+    if(missingButtons > 0){startPage = Math.max(1, startPage - missingButtons)};
 
-    for(let i = 1; i <= totalPages; i++){
+    for(let i = startPage; i <= endPage; i++){
+        
         const pageButton = document.createElement("button");
         pageButton.textContent = i;
 
         if(i === currentPage){
             pageButton.classList.add("active")
         };
-        
         pageButton.addEventListener("click", () => {
             currentPage = i;
             window.scrollTo({
@@ -162,7 +164,8 @@ function applyFilters(){
     details.textContent = `Showing: ${startIndex + 1} - ${endIndex} of ${filteredProducts.length} Products.`
     if(filteredProducts.length < 8){
         details.textContent = `Showing: ${1} - ${filteredProducts.length} of ${filteredProducts.length} Products.`
-    }else if(filteredProducts.length === 0){
+    }
+    if(filteredProducts.length === 0){
         details.textContent = `No products found.`
     }
     renderProducts(productsForCurrentPage);
