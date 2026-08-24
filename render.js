@@ -16,6 +16,7 @@ nextButton.classList.add("style");
 let currentPage = 1;
 const productsPerPage = 8;
 let totalPages = 1;
+let visibleButtons = 5;
 
 const filters = {
     search: "",
@@ -129,12 +130,18 @@ function applyFilters(){
     }else{
         previousButton.disabled = false;
     }
-    if (window.innerWidth <= 786) {
+    
+    
+    window.addEventListener("resize", () => {
+        if (window.innerWidth <= 786) {
             visibleButtons = 3;
         } else {
             visibleButtons = 5;
         }
-    let half = 2;
+
+        applyFilters();
+    });
+    let half = Math.floor(visibleButtons/2);
     let startPage = Math.max(1,currentPage - half);
     let endPage = Math.min(totalPages, startPage + visibleButtons - 1);
     let missingButtons = visibleButtons - (endPage - startPage + 1);
