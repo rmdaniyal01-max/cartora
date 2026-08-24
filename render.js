@@ -107,10 +107,7 @@ function applyFilters(){
         filteredProducts.sort((a, b) => b.id - a.id);
     }
 
-    const startIndex = (currentPage - 1) * productsPerPage;
-    const endIndex = startIndex  + productsPerPage;
-
-    const productsForCurrentPage = filteredProducts.slice(startIndex, endIndex);
+    
     totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
     if(currentPage > totalPages){
@@ -119,6 +116,10 @@ function applyFilters(){
     if(totalPages === 0){
         currentPage = 1;
     };
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex  + productsPerPage;
+
+    const productsForCurrentPage = filteredProducts.slice(startIndex, endIndex);
 
     paginationContainer.innerHTML = "";
 
@@ -128,7 +129,11 @@ function applyFilters(){
     }else{
         previousButton.disabled = false;
     }
-    let visibleButtons = 5
+    if (window.innerWidth <= 786) {
+            visibleButtons = 3;
+        } else {
+            visibleButtons = 5;
+        }
     let half = 2;
     let startPage = Math.max(1,currentPage - half);
     let endPage = Math.min(totalPages, startPage + visibleButtons - 1);
@@ -207,5 +212,3 @@ resetFilterButton.addEventListener("click", () => {
     filters.sort= "Sort By";
     applyFilters();
 });
-
-
