@@ -19,6 +19,9 @@ body{
 body::-webkit-scrollbar{
     display: none;
 }
+main{
+    min-height: 100dvh;
+}
 .Section{
     display: flex;
     justify-content: center;
@@ -33,9 +36,13 @@ body::-webkit-scrollbar{
     width: 80%;
     padding: 5px;
 }
-main{
-    min-height: 100dvh;
+.section-spanline{
+    background-color: var(--primary);
+    width: 80px;
+    height: 2px;
+    margin: 0px;
 }
+
 /*header section*/
 
 #header{

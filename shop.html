@@ -6,6 +6,7 @@
             content="my website">
         <meta charset="UTF-8">
         <link rel="Icon" href="images/Cartora-icon.webp">
+        <link rel="stylesheet" href="header-footer.css">
         <link rel="stylesheet" href="shop.css">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -29,7 +30,7 @@
                     <li><a href="categories.html">Categories</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="cart.html" id="cart-link">Cart</a></li>
+                    <li><a href="cart.html" id="cart-link">Cart<span id="cart-count"></span></a></li>
                     <li><a href="#">Profile</a></li>
                 </ul>
             </nav>
@@ -172,7 +173,7 @@
                     <button id="filter-resetbButton">Reset Filters</button>
                 </div>
             </section>
-            <section class="Section">
+            <section class="Section" id="product-section">
                 <!-- <div class="Container" -->
                         <p id="info"></p>
                     <div id="products-Container">

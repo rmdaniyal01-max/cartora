@@ -8,7 +8,7 @@ const resetFilterButton = document.getElementById("filter-resetbButton");
 const paginationContainer = document.getElementById ("pagination");
 const details = document.getElementById("info");
 const previousButton = document.createElement("button");
-const cartLink = document.getElementById("cart-link");
+const cartCount = document.getElementById("cart-count");
 previousButton.textContent = "◀"
 previousButton.classList.add("style");
 const nextButton = document.createElement("button");
@@ -66,7 +66,8 @@ function renderProducts(productList) {
 }
 
 function updateCartCount(){
-    const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0)
+    const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
+    cartCount.textContent = totalItems;
 }
 applyFilters();
 
