@@ -13,6 +13,8 @@ previousButton.classList.add("style");
 const nextButton = document.createElement("button");
 nextButton.textContent = "▶"
 nextButton.classList.add("style");
+const savedCart = localStorage.getItem("cart")
+let cart = savedCart ? JSON.parse(savedCart):[];
 let currentPage = 1;
 const productsPerPage = 8;
 let totalPages = 1;
@@ -41,12 +43,31 @@ function renderProducts(productList) {
                 <p class="product-brand">${product.brand}</p>
                 <p class="product-rating">Ratings: ${product.rating}/5</p>
                 <p class="product-price">Rs: <ins>${product.price}</ins></p><p class="original-price">Rs: <del>${product.oldPrice}</del></p>
-                <button class="product-button"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
             </div>
         `;
     });
+    const cartButtons = document.querySelectorAll(".product-button");
+    cartButtons.forEach(button =>{
+        button.addEventListener("click",()=>{
+            const productId = button.dataset.id;
+            const product = productList.find(product => product.id === Number(productId));
+            const existingProduct = cart.find(item => item.id === product.id);
+            if(existingProduct){
+                existingProduct.quantity++
+            }else{
+                cart.push({...product, quantity: 1})
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            console.log(cart)
+        });
+    });
 }
+
+
+
 applyFilters();
+
 searchInput.addEventListener("input", () => {
     filters.search = searchInput.value;
     applyFilters();
@@ -131,7 +152,6 @@ function applyFilters(){
         previousButton.disabled = false;
     }
     
-    
     window.addEventListener("resize", () => {
         if (window.innerWidth <= 786) {
             visibleButtons = 3;
@@ -180,6 +200,7 @@ function applyFilters(){
     if(filteredProducts.length === 0){
         details.textContent = `No products found.`
     }
+    
     renderProducts(productsForCurrentPage);
 };
 
