@@ -200,9 +200,11 @@ function applyFilters(){
         details.textContent = `Showing: ${1} - ${filteredProducts.length} of ${filteredProducts.length} Products.`
     }
     if(filteredProducts.length === 0){
-        details.textContent = `No products found.`
+        details.textContent = `No matching products found.`
+        paginationContainer.style.display = "none";
+    }else{
+        paginationContainer.style.display = "flex";
     }
-    
     renderProducts(productsForCurrentPage);
 };
 
