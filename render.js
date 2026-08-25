@@ -14,8 +14,9 @@ previousButton.classList.add("style");
 const nextButton = document.createElement("button");
 nextButton.textContent = "▶"
 nextButton.classList.add("style");
-const savedCart = localStorage.getItem("cart")
+const savedCart = localStorage.getItem("cart");
 let cart = savedCart ? JSON.parse(savedCart):[];
+updateCartCount();
 let currentPage = 1;
 const productsPerPage = 8;
 let totalPages = 1;
@@ -56,11 +57,15 @@ function renderProducts(productList) {
             const existingProduct = cart.find(item => item.id === product.id);
             if(existingProduct){
                 existingProduct.quantity++
+                if(existingProduct.quantity >5){
+                    existingProduct.quantity =5;
+                    alert("Dear Customer! you cannot order more than 5 of the same product at a time");
+                }
             }else{
                 cart.push({...product, quantity: 1})
             }
             localStorage.setItem("cart", JSON.stringify(cart));
-            console.log(cart)
+            updateCartCount();
         });
     });
 }
