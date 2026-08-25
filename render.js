@@ -8,6 +8,7 @@ const resetFilterButton = document.getElementById("filter-resetbButton");
 const paginationContainer = document.getElementById ("pagination");
 const details = document.getElementById("info");
 const previousButton = document.createElement("button");
+const cartLink = document.getElementById("cart-link");
 previousButton.textContent = "◀"
 previousButton.classList.add("style");
 const nextButton = document.createElement("button");
