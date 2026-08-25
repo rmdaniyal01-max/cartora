@@ -41,6 +41,7 @@ body::-webkit-scrollbar{
     margin: 0px;
 }
 /*header section*/
+
 #header{
     background-color: rgba(0, 177, 236, 0.205);
     border: 1px dashed var(--primary);
@@ -160,40 +161,8 @@ body::-webkit-scrollbar{
 #nav-links a.active{
     color: var(--primary);
 }
-
-#navIcons-cart-profile{
-    display: none;
-}
-#navIcons-cart-profile a{
-    padding: opx;
-}
-#icons-cart-profile{
-    display: flex;
-    gap: 10px;
-    opacity: 0;
-    animation: nav 1s ease-out 1.5s forwards;
-}
-#icons-cart-profile a{
-    padding: 0px;
-}
-.cart-icon{
-    fill: var(--accent);
-    width: clamp(20px, 5vw, 25px);
-}
-.cart-icon:hover{
-    fill: var(--primary);
-}
-
 .show{
     display: flex !important;
-}
-
-.profile-icon{
-    fill: var(--accent);
-    width: clamp(20px, 5vw, 25px);
-}
-.profile-icon:hover{
-    fill: var(--primary);
 }
 
 /*hero section for shop*/
@@ -893,27 +862,6 @@ footer{
         height: 300px;
         padding: 20px;
         animation: header .5s ease-in-out forwards;
-    }
-
-    #navIcons-cart-profile{
-        display: flex;
-        gap: 50px;
-        opacity: 0;
-        animation: nav 1s ease-out 1s forwards;
-    }
-    #navIcons-cart-profile a{
-        padding: 0px;
-    }
-
-    #icons-cart-profile{
-        display: none;
-    }
-
-    .cart-logo{
-        width: 20px;
-    }
-    .profile-logo{
-        width: 20px;
     }
     #hero-banner{
         width: 100dvw;

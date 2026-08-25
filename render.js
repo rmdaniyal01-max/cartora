@@ -64,8 +64,9 @@ function renderProducts(productList) {
     });
 }
 
-
-
+function updateCartCount(){
+    const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0)
+}
 applyFilters();
 
 searchInput.addEventListener("input", () => {
