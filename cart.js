@@ -2,7 +2,8 @@ const cartContainer = document.getElementById("cart-container");
 const cartCount = document.getElementById("cart-count");
 const cartTotalElement = document.getElementById("cart-total");
 const cartSubTotalElement = document.getElementById("cart-subtotal");
-const itemCard = document.getElementById("card");
+const checkoutButton = document.getElementById("checkout-button")
+const itemCard = document.getElementById("cart-summary");
 const savedCart = localStorage.getItem("cart");
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
@@ -13,19 +14,18 @@ updateCartCount();
 
 function renderCart(){
     cartContainer.innerHTML = "";
-    itemCard.innerHTML="";
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         cartContainer.innerHTML += `
             <div class="products-Cards">
                 <div class="product-image">
-                    <img src="${item.image}" alt="Headphones" loading="lazy" width="180px" height="180px">
+                    <img src="${item.image}" alt="${item.name}" loading="lazy" width="240px" height="240px">
                 </div>
                 <div class="product-details">
                     <h3 class="product-name">${item.name}</h3>
-                    <p class="product-brand">${item.brand}</p>
+                    <p class="product-brand">${item.brand || "Open Source"}</p>
                     <p class="product-rating">Ratings: ${item.rating}/5</p>
-                    <p class="product-price">Rs: <ins>${item.price}</ins></p><p class="original-price">Rs: <del>${item.oldPrice}</del></p>
+                    <p class="product-price">$: <ins>${item.price}</ins></p><p class="original-price">$: <del>${(Number(item.price)+3).toFixed(2)}</del></p>
                     <div class="quantity-container">
                         <button class="increase-button" data-id="${item.id}">+</button>
                         <p class="product-quantity">${item.quantity}</p>
@@ -33,7 +33,7 @@ function renderCart(){
                     </div>
                 </div>
                 <div class="product-total">
-                    <p class="item-total">Total: Rs ${itemTotal}</p>
+                    <p class="item-total">Total: $ ${Number(itemTotal).toFixed(2)}</p>
                     <button class="remove-button" data-id="${item.id}"><i class="fa-regular fa-trash-can"></i></buton>
                 </div>
             </div>
@@ -55,10 +55,10 @@ function renderCart(){
         <div id="empty-cart">
             <p>Looks like your cart is empty!</p>
             <p>Visit our shop to pick an item you like.</p>
-            <a href="shop.html"><button class="proceed-button">Shop</button></a>
+            <a href="shop.html"><button class="goto-button">Shop</button></a>
             <p>Or</p>
             <p>Visit our Categories</p>
-            <a href="categories.html"><button class="proceed-button">Categories</button></a>
+            <a href="categories.html"><button class="goto-button">Categories</button></a>
         </div>`
     }
     const increaseButtons = document.querySelectorAll(".increase-button");
@@ -97,10 +97,10 @@ function renderCart(){
     });
     
     const cartSubTotal = cart.reduce((total, item) => { return total+(item.price * item.quantity) }, 0);
-    cartSubTotalElement.textContent = ` Rs,${cartSubTotal}`;
+    cartSubTotalElement.textContent = `${Number(cartSubTotal).toFixed(2)}$`;
     const shippingCost = 0;
     const grandTotal = cartSubTotal + shippingCost;
-    cartTotalElement.textContent =`Rs,${grandTotal}`
+    cartTotalElement.textContent =`${Number(grandTotal).toFixed(2)}$`
 }
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
