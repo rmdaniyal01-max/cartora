@@ -121,7 +121,7 @@
 }
 
 #heroButton1{
-    color: var(--text);
+    color: var(--background);
     background-color: var(--primary);
     border: none;
     padding: 10px 30px;
@@ -140,7 +140,7 @@
 
 
 #heroButton2{
-    color: var(--text);
+    color: var(--background);
     background-color: var(--secondary);
     border: none;
     padding: 10px 30px;

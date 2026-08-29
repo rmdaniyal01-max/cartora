@@ -200,7 +200,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     background: #273549;
     margin-top: 10px;
     padding: 5px 10px;
@@ -246,7 +245,7 @@ body{
 }
 #checkout-button:hover{
     background: var(--secondary);
-    transform: scale(1.01);
+    transform: translateY(-3px);
 }
 #checkout-button:active{
     transform: scale(.99);

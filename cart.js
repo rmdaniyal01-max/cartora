@@ -102,6 +102,13 @@ function renderCart(){
     const grandTotal = cartSubTotal + shippingCost;
     cartTotalElement.textContent =`${Number(grandTotal).toFixed(2)}$`
 }
+checkoutButton.addEventListener("click",()=>{
+    if(cart.length ===0){
+        return;
+    }else{
+        window.location.href="checkout.html"
+    }
+})
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;
