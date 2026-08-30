@@ -21,15 +21,15 @@
         <h1 id="main-heading">
             Checkout
         </h1>
-        <section id="checkout-container">
+        <form id="checkout-form">
             <section id="checkout-leftpanel">
                 <div class="checkout-section">
                     <h2>Customer Information</h2>
 
                     <div id="info-inputs">
-                        <input type="text" id="customer-name" placeholder="Full Name">
-                        <input type="email" id="customer-email" placeholder="Email">
-                        <input type="tel" id="customer-phone" placeholder="Phone Number">
+                        <input type="text" id="customer-name" placeholder="Full Name" required>
+                        <input type="email" id="customer-email" placeholder="Email" required>
+                        <input type="tel" id="customer-phone" placeholder="Phone Number" required>
                     </div>
                 </div>
                 <hr>
@@ -37,13 +37,13 @@
                     <h2>Shipping Information</h2>
 
                     <div id="shipping-inputs">
-                        <input type="text" id="shipping-address" placeholder="Street Address">
-                        <input type="text" id="shipping-city" placeholder="City">
+                        <input type="text" id="shipping-address" placeholder="Street Address" required>
+                        <input type="text" id="shipping-city" placeholder="City" required>
                         <div>
-                            <input type="text" id="shipping-state" placeholder="Province / State">
-                            <input type="text" id="shipping-postal" placeholder="Postal Code">
+                            <input type="text" id="shipping-state" placeholder="Province / State" required>
+                            <input type="number" id="shipping-postal" placeholder="Postal Code" required>
                         </div>
-                        <input type="text" id="shipping-country" placeholder="Country">
+                        <input type="text" id="shipping-country" placeholder="Country" required>
                     </div>
                 </div>
                 <button type="submit" id="place-order-button">Place Order</button>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </section>
-        </section>
+        </form>
     </main>
     <footer>
         <section class="Section" id="footer-topSection">
