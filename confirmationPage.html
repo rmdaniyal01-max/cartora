@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Icon" href="images/Cartora-icon.webp">
+    <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="confirmationPage.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmtion-Page</title>
+</head>
+<body>
+    <main id="order-confirmation">
+        <section id="confirmation-container">
+            <div id="confirmation-note">
+                <h1>🎉 Order Placed Successfully!</h1>
+                <p>Thank you, <strong id="customer-name"></strong>!</p>
+                <p>We have received your Order and it is being processed.</p>
+                <p>You will receive an email confirmation shortly.</p>
+            </div>
+        </section>
+        <section id="products-section">
+            <h2>Ordered products:</h2>
+            <div id="ordered-products"></div>
+            <p id="total-paid">
+                Total Paid: 
+                <strong id="order-total"></strong>
+            </p>
+        </section>
+        <p>Order ID: <strong id="order-id"></strong></p>
+        <p>Order DATE: <strong id="order-date"></strong></p>
+        
+        <a href="shop.html">
+            <button>Continue Shopping</button>
+        </a>
+    </main>
+    <script src="confirmationPage.js"></script>
+</body>
+</html>
