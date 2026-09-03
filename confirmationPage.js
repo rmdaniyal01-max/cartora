@@ -1,6 +1,7 @@
 const orderIdElement = document.getElementById("order-id");
 const orderDateElement = document.getElementById("order-date");
 const customerNameElement = document.getElementById("customer-name");
+const orderByNameElement = document.getElementById("order-by-name");
 const orderId = localStorage.getItem("lastOrderId");
 const savedOrderDate = localStorage.getItem("lastOrderDate");
 const customerName = localStorage.getItem("lastCustomerName");
@@ -15,6 +16,7 @@ orderDateElement.textContent = orderDate.toLocaleDateString("en-US", {
     day: "numeric"
 });
 customerNameElement.textContent = customerName;
+orderByNameElement.textContent = customerName;
 
 function renderOrderedProducs(){
     orderedProducts.innerHTML =""
