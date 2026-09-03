@@ -645,6 +645,7 @@
     background: #1f29376c;
     box-shadow: inset -2px -2px 10px black,
         inset 2px 2px 5px white;
+        -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 10px;
