@@ -48,8 +48,9 @@ checkoutForm.addEventListener("submit",(event)=>{
         customerName: customerName,
         products: cart,
         total: cart.reduce((total, item) => {
-            return total + (item.price * item.quantity).toFixed(2);
-        }, 0)
+            return total + Number(item.price * item.quantity);
+        }, 0),
+        status:"Processing"
     };
     savedOrders.push(order);
     localStorage.setItem("orders", JSON.stringify(savedOrders));
