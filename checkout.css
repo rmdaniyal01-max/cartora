@@ -204,9 +204,7 @@ input:focus{
     overflow: auto;
     height: 350px;
     padding: 10px;
-    background: linear-gradient(135deg, darkblue, rgb(119, 255, 255),blue);
-    box-shadow: 1px 1px 10px cyan,
-     inset 1px 1px 10px cyan;
+    border: 1px solid gray;
     border-radius: 5px;
     gap: 10px;
     &::-webkit-scrollbar{
@@ -217,25 +215,22 @@ input:focus{
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.3);
-    height: 250px;
+    height: max-content;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border: 1px solid cyan;
+    border: 1px solid gray;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px cyan,
-     inset 1px 1px 10px cyan;
+    box-shadow: 1px 1px 5px gray;
     transition: transform .3s ease;
 }
 .checkout-product:hover{
     transform: translateY(-2px);
 }
 .products-image{
-    border: 1px solid cyan;
     margin: 10px;
     border-radius: 5px;
     color: var(--background);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(to top, black, transparent);
     width: 100px;
 }
 .products-name{
@@ -253,23 +248,23 @@ input:focus{
     color: text;
 }
 .checkout-summary{
-    background: linear-gradient(135deg, darkblue, rgb(119, 255, 255), rgb(119, 255, 255),blue);
-    box-shadow: 1px 1px 10px cyan,
-     inset 1px 1px 10px cyan;
+    border: 1px solid gray;
+    box-shadow: 1px 1px 10px gray;
     border-radius: 5px;
     gap: 10px;
     margin-top: 10px;
     padding: 5px;
 }
+.checkout-summary hr{
+    margin: 10px;
+}
 .checkout-summary p{
     font-size: 15px;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 1px 1px 10px cyan,
-     inset 1px 1px 10px cyan;
     border-radius: 5px;
     gap: 10px;
     padding: 5px;
+    margin: 5px;
 }
 
 
@@ -452,8 +447,8 @@ footer{             /*footer section*/
         font-size: 12px;
         color: var(--text);
     }
-    #checkout-container{                /*checkout section*/
-        flex-direction: column;
+    #checkout-form{                /*checkout section*/
+        flex-direction: column-reverse;
         gap: 10px;
     }
     #checkout-leftpanel{

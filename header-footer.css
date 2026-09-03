@@ -365,7 +365,7 @@ footer{
         right: 5px;
         gap: 30px;
         width: 80%;
-        height: 300px;
+        height: max-content;
         padding: 20px;
         animation: header .5s ease-in-out forwards;
     }
