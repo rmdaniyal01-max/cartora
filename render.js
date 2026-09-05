@@ -43,7 +43,7 @@ function renderProducts(productList) {
                 </div>
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-brand">${product.brand || "Open Source"}</p>
-                <p class="product-rating">Ratings: ${product.rating}/5</p>
+                <p class="product-rating">Ratings: ${product.rating}</p>
                 <p class="product-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${(Number(product.price)+3).toFixed(2)}</del></p>
                 <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
             </div>

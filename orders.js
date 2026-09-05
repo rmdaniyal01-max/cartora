@@ -19,28 +19,46 @@ function renderOrders(){
     return;
 }
     orders.forEach(order => {
-        console.log(typeof order.products.price)
         ordersContainer.innerHTML +=`
             <div class="orders-container">
-                <h2>Customer Name: ${order.customerName}</h2>
+                <h2>Customer Name: <span>${order.customerName}</span></h2>
                 <p>Order id: ${order.id}</p>
+                <p>Status: <span>${order.status || "Processing"}</span></p>
                 <p>Ordered Date: ${new Date(order.date).toLocaleDateString()}</p>
+                <hr>
                 <p>Order Total: ${order.total}</p>
                 <button class="view-order-button" data-id="${order.id}">
                     View Details
                 </button>
+                ${(order.status || "Processing") !=="Cancelled"?`
+                <button class="cancel-order-button" data-id="${order.id}">
+                    Cancel Order
+                </button>`: ""}
             </div>
         `
     });
 }
 renderOrders();
 
-const viewOrderButtons = document.querySelectorAll(".view-order-button");
-viewOrderButtons.forEach(button =>{
-    button.addEventListener("click", ()=>{
-        const orderId = button.dataset.id;
+ordersContainer.addEventListener("click",(event)=>{
+    if(event.target.classList.contains("view-order-button")){
+       const orderId = event.target.dataset.id;
         const selectedOrder = orders.find(order => order.id === orderId);
         localStorage.setItem("selectedOrder", JSON.stringify(selectedOrder))
         window.location.href = "order-details.html";
-    })
-})
+    }
+});
+ordersContainer.addEventListener("click",(event)=>{
+    if(!event.target.classList.contains("cancel-order-button")){
+        return;
+    }
+    const orderId = event.target.dataset.id;
+    const selectedOrder = orders.find(order => order.id === orderId);
+    const confirmCancle = confirm("Are you sure you wont to cancle this Order");
+    if(!confirmCancle){
+        return;
+    }
+    selectedOrder.status = "Cancelled"
+    localStorage.setItem("orders", JSON.stringify(orders));
+    renderOrders();
+});

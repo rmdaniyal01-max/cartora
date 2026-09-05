@@ -17,7 +17,7 @@ async function loadProducts() {
     productList = data.products.map(product =>({
         id:product.id,
         name:product.title,
-        price:product.price,
+        price:product.price +0.01,
         image:product.thumbnail,
         category:product.category,
         brand:product.brand,
