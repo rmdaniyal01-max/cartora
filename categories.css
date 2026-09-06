@@ -1,0 +1,41 @@
+main{
+    display: flex;
+}
+#categories-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    height: 100vh;
+    overflow-y: auto;
+    border: 1px solid black;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+.categories{
+    
+    margin: 5px;
+    border: 1px solid blue;
+}
+.category-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+#categories-container{
+    border: 1px solid green;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    height: 100dvh;
+    width: 75%;
+    padding: 10px;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
