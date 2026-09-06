@@ -26,6 +26,7 @@ async function loadProducts() {
         description:product.description,
         badge:product.tags
     }));
+    localStorage.setItem("productList", JSON.stringify(productList));
     sessionStorage.setItem("cartoraProducts", JSON.stringify(productList));
     renderProducts(productList);
     applyFilters()
@@ -34,4 +35,7 @@ async function loadProducts() {
     }
 }
 loadProducts();
+const uniqueCategories = [...new Map(productList.map(item => [item.category, item])).values()];
+console.log(uniqueCategories)
+localStorage.setItem("categories", JSON.stringify(uniqueCategories));
 
