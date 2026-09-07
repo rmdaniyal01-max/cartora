@@ -1,41 +1,81 @@
-const categoriesContainer = document.getElementById("categories-container");
+const menuButton = document.getElementById("menu-button");
+const navLinks = document.getElementById("nav-links");
 const categoriesLinks = document.getElementById("categories-links");
+const categoriesContainer = document.getElementById("categories-container");
 
-const categories = JSON.parse(localStorage.getItem("categories")) || [];
+const cartCount = document.getElementById("cart-count");
+
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
-// console.log(productList);
-    categoriesLinks.innerHTML="";
-    categories.forEach(item => {
-        categoriesLinks.innerHTML += `
-            <div class="categories">
-                <button class="category-buttons" title="go to ${item.category}" data-id="${item.category}">${(item.category).toUpperCase()}<span> → </span></button>
-            </div>
+updateCartCount()
+
+const uniqueCategories = [...new Map(productList.map(item => [item.category, item])).values()];
+console.log(uniqueCategories);
+
+function renderCategories(){
+    uniqueCategories.forEach(item =>{
+        categoriesLinks.innerHTML+=`
+            <button class="category-button" data-id="${item.category}">${item.category}</button>
         `
     });
-
-const categoryButtons = document.querySelectorAll(".category-buttons");
-categoryButtons.forEach(button=>{
-    button.addEventListener("click",()=>{
+};
+renderCategories();
+const categoryButtons = document.querySelectorAll(".category-button");
+categoryButtons.forEach(button =>{
+    button.addEventListener("click", () => {
         const productCategory = button.dataset.id;
-        const categories = productList.filter(product => product.category === productCategory)
-        console.log(categories)
-        categoriesContainer.innerHTML = ""
-        categories.forEach(product =>{
+        const categoryProducts = productList.filter(product => product.category === productCategory);
+        categoriesContainer.innerHTML=""
+        categoryProducts.forEach(product =>{
             categoriesContainer.innerHTML+=`
-            <div class="products-Cards">
-                <div class="product-image">
-                    <span class="product-badge">${product.badge[1] || product.badge[0]}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="product-wishlistIcon" width="50px">
-                        <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
-                    <img src="${product.image}" alt="${product.name}" loading="lazy" width="250px" height="250px">
+                <div class="products-Cards">
+                    <div class="product-image">
+                        <i class="fa-solid fa-heart"></i>
+                        <img src="${product.image}" alt="${product.name}" loading="lazy" width="150px" height="150px">
+                    </div>
+                    <div class="product-details">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-brand">${product.brand || "Open Source"}</p>
+                    <p class="product-rating">Ratings: ${product.rating}</p>
+                    <p class="product-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${product.price +3}</del></p>
+                    <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                    </div>
                 </div>
-                <h3 class="product-name">${product.name}</h3>
-                <p class="product-brand">${product.brand || "Open Source"}</p>
-                <p class="product-rating">Ratings: ${product.rating}</p>
-                <p class="product-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${(Number(product.price)+3).toFixed(2)}</del></p>
-                <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
-            </div>
             `
-        })
-    })
+        });
+    });
+});
+categoriesContainer.addEventListener("click", (event) =>{
+    if(event.target.classList.contains("product-button")){
+        const productId = event.target.dataset.id;
+        console.log(productId)
+        const product = productList.find(product => product.id === Number(productId));
+        console.log(product)
+        const existingProduct = cart.find(item => item.id === product.id);
+        if(existingProduct){
+            existingProduct.quantity++
+            if(product.stock < existingProduct.quantity){
+                existingProduct.quantity = product.stock
+                alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
+            }
+            if(existingProduct.quantity >5){
+                existingProduct.quantity = 5
+                alert("Dear Customer! you cannot order more than 5 of the same product at a time");
+            }
+        }else{
+            cart.push({...product, quantity: 1})
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+    }
 })
+
+function updateCartCount(){
+    const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
+    cartCount.textContent = totalItems;
+};
+
+menuButton.addEventListener("click", () => 
+    navLinks.classList.toggle("show")
+);

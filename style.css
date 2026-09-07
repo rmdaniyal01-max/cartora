@@ -300,6 +300,7 @@
     overflow: hidden;
 }
 .product-image img{
+    background: linear-gradient(130deg, black, blue);
     width: 250px;
     height: 250px;
     transition: 0.3 ease;
@@ -308,10 +309,28 @@
     transform: scale(1.05);
 }
 .product-name{
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: var(--primary);
-    width: max-content;
     font-size: 20px;
-    margin: 5px;
+    margin: 10px 5px 0px 5px;
+}
+.featured-Cards:hover .product-name{
+    animation: slideText 2s linear 10 alternate;
+}
+@keyframes slideText{
+    0%{
+        text-overflow: clip;
+        overflow: visible;
+        transform: translateX(0%);
+    }
+    100%{
+        text-overflow: clip;
+        overflow: visible;
+        transform: translateX(calc(-100% + 180px))
+    }
 }
 .product-brand{
     color: var(--text);
@@ -440,6 +459,7 @@
     position: relative;
 }
 .flashProduct-image img{
+    background: linear-gradient(130deg, black, blue);
     width: 250px;
     height: 260px;
     transition: transform 0.3s ease;

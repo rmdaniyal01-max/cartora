@@ -14,8 +14,7 @@ previousButton.classList.add("style");
 const nextButton = document.createElement("button");
 nextButton.textContent = "▶"
 nextButton.classList.add("style");
-const savedCart = localStorage.getItem("cart");
-let cart = savedCart ? JSON.parse(savedCart):[];
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 updateCartCount();
 let currentPage = 1;
 const productsPerPage = 8;
@@ -36,7 +35,7 @@ function renderProducts(productList) {
         productsContainer.innerHTML += `
             <div class="products-Cards">
                 <div class="product-image">
-                    <span class="product-badge">${product.badge[1] || product.badge[0]}</span>
+                    <span class="product-badge">${product.badge}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="product-wishlistIcon">
                         <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/></svg>
                     <img src="${product.image}" alt="${product.name}" loading="lazy" width="250px" height="250px">
@@ -57,6 +56,10 @@ function renderProducts(productList) {
             const existingProduct = cart.find(item => item.id === product.id);
             if(existingProduct){
                 existingProduct.quantity++
+                if(product.stock < existingProduct.quantity){
+                    existingProduct.quantity = product.stock
+                    alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
+                }
                 if(existingProduct.quantity >5){
                     existingProduct.quantity =5;
                     alert("Dear Customer! you cannot order more than 5 of the same product at a time");

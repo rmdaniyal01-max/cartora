@@ -69,6 +69,10 @@ function renderCart(){
             product.quantity++;
             const quantityElement = button.parentElement.querySelector(".product-quantity");
             quantityElement.textContent = product.quantity;
+            if(product.stock < product.quantity){
+                product.quantity = product.stock
+                alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
+            }
             if(product.quantity >= 5){
                 product.quantity =5;
                 quantityElement.textContent = product.quantity;

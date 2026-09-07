@@ -5,12 +5,11 @@ menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
 let productList =[];
 
 async function loadProducts() {
-    const savedSession = sessionStorage.getItem("cartoraProducts");
+    const savedSession = localStorage.getItem("productList");
     if(savedSession){
         productList = JSON.parse(savedSession);
         return;
     }
-
     try{
     const response =await fetch("https://dummyJSON.com/products?limit=0");
     const data =await response.json();
@@ -22,12 +21,11 @@ async function loadProducts() {
         category:product.category,
         brand:product.brand,
         rating:product.stock,
-        stock:product.id,
+        stock:product.stock,
         description:product.description,
-        badge:product.tags
+        badge:product.tags[1] || product.tags[0]
     }));
     localStorage.setItem("productList", JSON.stringify(productList));
-    sessionStorage.setItem("cartoraProducts", JSON.stringify(productList));
     renderProducts(productList);
     applyFilters()
     }catch(error){
@@ -35,7 +33,4 @@ async function loadProducts() {
     }
 }
 loadProducts();
-const uniqueCategories = [...new Map(productList.map(item => [item.category, item])).values()];
-console.log(uniqueCategories)
-localStorage.setItem("categories", JSON.stringify(uniqueCategories));
 
