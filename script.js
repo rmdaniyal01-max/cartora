@@ -112,7 +112,7 @@ function renderFlashProducts() {
 };
 renderFlashProducts();
 
-addEventListener("scroll", () => {
+window.addEventListener("scroll", () => {
     if(window.scrollY >= 300){
         topButton.classList.add("moveToTop");
     }

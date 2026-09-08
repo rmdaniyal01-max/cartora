@@ -2,6 +2,7 @@ const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 const categoriesLinks = document.getElementById("categories-links");
 const categoriesContainer = document.getElementById("categories-container");
+const linksToggle = document.getElementById("links-toggle");
 
 const cartCount = document.getElementById("cart-count");
 
@@ -30,19 +31,25 @@ categoryButtons.forEach(button =>{
             categoriesContainer.innerHTML+=`
                 <div class="products-Cards">
                     <div class="product-image">
-                        <i class="fa-solid fa-heart"></i>
                         <img src="${product.image}" alt="${product.name}" loading="lazy" width="150px" height="150px">
                     </div>
                     <div class="product-details">
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-brand">${product.brand || "Open Source"}</p>
-                    <p class="product-rating">Ratings: ${product.rating}</p>
-                    <p class="product-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${product.price +3}</del></p>
-                    <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-brand">${product.brand || "Open Source"}</p>
+                        <p class="product-price">$: <ins>${product.price}</ins></p>
+                        <p class="original-price">$: <del>${product.price +3}</del></p>
+                        <p class="product-rating">Ratings: ${product.rating}/100</p>
+                        <div class="buttons">
+                            <button class="product-button" data-id="${product.id}">Add to Cart</button>
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
                     </div>
                 </div>
             `
         });
+        if(categoriesLinks.classList.contains("links-display")){
+            categoriesLinks.classList.remove("links-display")
+        }
     });
 });
 categoriesContainer.addEventListener("click", (event) =>{
@@ -69,8 +76,12 @@ categoriesContainer.addEventListener("click", (event) =>{
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartCount();
     }
-})
-
+});
+if(window.innerWidth <= 768){
+    linksToggle.addEventListener("click",()=>{
+        categoriesLinks.classList.toggle("links-display")
+    });
+}
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;

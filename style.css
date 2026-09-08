@@ -1,9 +1,29 @@
+:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --secondary: #06B6D4;
+    --accent: #F59E0B;
+
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+
+    --text: #0F172A;
+    --text-muted: #64748B;
+
+    --border: #E2E8F0;
+
+    --success: #16A34A;
+    --danger: #DC2626;
+
+    --shadow: rgba(15, 23, 42, 0.08);
+}
+
 #top-button{
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     background-color: var(--primary);
-    color: var(--background);
+    color: var(--bg);
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -58,7 +78,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    margin-top: -70px;
+    margin-top: -20px;
     padding: 10px;
     height: clamp(50dvh, 100dvh, 100dvh);
     width: clamp(50dvw, 100dvw, 100dvw);
@@ -78,7 +98,7 @@
 }
 
 #heroMini-heading{
-    color: var(--background);
+    color: var(--bg);
     background-color: var(--primary);
     width: max-content;
     padding: 5px 15px;
@@ -90,7 +110,7 @@
 }
 
 #hero-heading{
-    color: var(--background);
+    color: var(--bg);
     font-size: clamp(30px, 5vw, 50px);
     font-weight: bolder;
     width: max-content;
@@ -105,7 +125,7 @@
 }
 
 #hero-description{
-    color: var(--background);
+    color: var(--bg);
     max-width: 550px;
     margin: 10px 0px 50px 0px;
     opacity: 0;
@@ -121,9 +141,9 @@
 }
 
 #heroButton1{
-    color: var(--background);
+    color: var(--bg);
     background-color: var(--primary);
-    border: none;
+    border: 2px solid var(--primary);
     padding: 10px 30px;
     border-radius: 5px;
     font-size: 16px;
@@ -131,7 +151,7 @@
     transition: transform 0.3s ease;
 }
 #heroButton1:hover{
-    background-color: #5b86e4;
+    background-color: var(--primary-dark);
     transform: scale(1.05);
 }
 #heroButton1:active{
@@ -140,9 +160,9 @@
 
 
 #heroButton2{
-    color: var(--background);
-    background-color: var(--secondary);
-    border: none;
+    color: var(--bg);
+    background-color: transparent;
+    border: 2px solid var(--bg);
     padding: 10px 30px;
     border-radius: 5px;
     font-size: 16px;
@@ -150,7 +170,7 @@
     transition: 0.3s;
 }
 #heroButton2:hover{
-    background-color: #8dddc3;
+    background-color: var(--primary-dark);
     transform: scale(1.05);
 }
 #heroButton2:active{
@@ -228,14 +248,14 @@
     margin: 5px 0px;
 }
 .cards-button{
-    color: var(--background);
+    color: var(--surface);
     background-color: var(--primary);
     border: none;
     width: 100%;
     padding: 10px;
 }
 .cards-button:hover{
-    background-color: #002168;
+    background-color: var(--primary-dark);
     transform: scale(1.05);
 }
 .cards-button:active{
@@ -255,21 +275,21 @@
 .featured-Cards{
     width: 250px;
     height: 440px;
-    box-shadow: 2px 2px 10px gray;
+    box-shadow: 2px 2px 10px var(--text-muted);
     border-radius: 5px;
     overflow: hidden;
     transition: 0.2s;
 }
 .featured-Cards:hover{
     transform: translateY(-2px);
-    box-shadow: 1px 1px 20px rgb(184, 183, 183);
+    box-shadow: 1px 1px 20px var(--text-muted);
     transition: 0.2s;
 }
 
 .product-badge{
     position: absolute;
-    color: var(--background);
-    background-color: var(--secondary);
+    color: var(--bg);
+    background-color: var(--success);
     font-size: 10px;
     width: max-content;
     padding: 5px 10px;
@@ -281,7 +301,7 @@
     display: flex;
     left: 210px;
     position: absolute;
-    fill: var(--secondary);
+    fill: var(--success);
     width: 25px;
     margin: 5px 5px;
     z-index: 10;
@@ -352,14 +372,14 @@
     margin-top: 30px;
 }
 .original-price{
-    color: rgb(153, 153, 153);
+    color: var(--text-muted);
     width: max-content;
     font-size: 15px;
     margin: 5px;
 }
 
 .product-button{
-    color: var(--background);
+    color: var(--bg);
     background-color: var(--primary);
     padding: 5px 15px;
     margin: 10px 5px 0px 5px;
@@ -369,9 +389,9 @@
     transition: 0.2s;
 }
 .product-button:hover{
-    background-color: var(--secondary);
+    background-color: var(--success);
     transition: transform 0.3s ease-out;
-    box-shadow: 1px 1px 5px gray;
+    box-shadow: 1px 1px 5px var(--text-muted);
 }
 .product-button:active{
     transform: scale(.95);
@@ -389,10 +409,10 @@
 }
 @keyframes glow{
     0%{
-        border: 2px solid blue;
+        border: 2px solid var(--primary);
     }
     100%{
-        border: 2px solid cyan;
+        border: 2px solid var(--secondary);
     }
 }
 #flashHeader-content{
@@ -403,12 +423,12 @@
     padding: 5px;
 }
 #flashHeader-content h1{
-    color: var(--secondary);
+    color: var(--success);
     font-size: 40px;
     margin: 5px 0px;
 }
 #flashHeader-content p{
-    color: var(--background);
+    color: var(--bg);
     font-size: 25px;
     margin: 5px 0px;
 }
@@ -432,7 +452,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    box-shadow: 2px 2px 10px gray;
+    box-shadow: 2px 2px 10px var(--text-muted);
     border-radius: 5px;
     overflow: hidden;
     transition: transform 0.3s ease-out;
@@ -444,8 +464,8 @@
 
 .flashProduct-badge{
     position: absolute;
-    color: var(--background);
-    background-color: var(--secondary);
+    color: var(--bg);
+    background-color: var(--success);
     font-size: 12px;
     width: max-content;
     padding: 5px 10px;
@@ -501,7 +521,7 @@
     margin: 30px 5px 5px 5px;
 }
 .flashOriginal-price{
-    color: rgb(153, 153, 153);
+    color: var(--text-muted);
     width: max-content;
     font-size: 15px;
     margin: 0px 5px 10px 5px;
@@ -524,7 +544,7 @@
 
 .flashProduct-button{
     align-self: center;
-    color: var(--background);
+    color: var(--bg);
     background-color: var(--primary);
     margin: 10px 5px 5px 5px;
     padding: 8px 15px;
@@ -534,7 +554,7 @@
     transition: transform 0.2s ease-out;
 }
 .flashProduct-button:hover{
-    background-color: var(--secondary);
+    background-color: var(--success);
     transform: translateY(-2px);
     box-shadow: 1px 1px 5px gray;
 }
@@ -595,7 +615,7 @@
     font-size: 15px;
     width: 150px;
     height: 50px;
-    color: grey;
+    color: var(--text-muted);
 }
 
 /*customer reviews section*/
@@ -607,7 +627,7 @@
     gap: 30px;
 }
 .Customer-contentBox{
-    box-shadow: 2px 3px 10px rgba(0,0,0,.3);
+    box-shadow: 2px 3px 10px var(--text);
     border-radius: 10px;
     padding: 10px;
     transition:
@@ -615,7 +635,7 @@
         box-shadow .3s ease;
 }
 .Customer-contentBox:hover{
-    box-shadow: 2px 3px 20px rgba(0,0,0,.4);
+    box-shadow: 2px 3px 20px var(--text);
     transform: scale(1.005);
 }
 .Customer-info{
@@ -633,7 +653,7 @@
     margin: 5px 0px;
 }
 .Customer-verification{
-    color: var(--secondary);
+    color: var(--success);
     font-size: 12px;
     font-weight: 600;
     margin: 5px 0px;
@@ -672,24 +692,24 @@
 }
 #newsletter-icon{
     align-self: center;
-    background-color: white;
+    background-color: var(--bg);
     border-radius: 100%;
     width: 50px;
     padding: 5px;
-    box-shadow: inset -2px -2px 10px black,
-        inset 2px 2px 5px white;
+    box-shadow: inset -2px -2px 10px var(--text),
+        inset 2px 2px 5px var(--bg);
     fill: var(--primary);
 }
 #newsletter-heading{
     align-self: center;
-    color: var(--background);
+    color: var(--bg);
     padding: 5px;
 }
 #newsletter-heading span{
     color: var(--primary);
 }
 #newsletter-description{
-    color: var(--background);
+    color: var(--bg);
     padding: 5px;
 }
 
@@ -700,18 +720,18 @@
     justify-content: center;
 }
 #subEmail-input{
-    color: white;
+    color: bg;
     background: transparent;
     padding: 10px 5px;
     width: 300px;
-    box-shadow: inset -2px -2px 10px black,
-        inset 2px 2px 5px white;
+    box-shadow: inset -2px -2px 10px var(--text),
+        inset 2px 2px 5px bg;
     border: none;
     transition: box-shadow .3s ease;
 }
 #subEmail-input:focus{
-    box-shadow: inset 2px 2px 2px black,
-        inset -2px -2px 2px white;
+    box-shadow: inset 2px 2px 2px var(--text),
+        inset -2px -2px 2px bg;
     outline: none;
 }
 #sub-button{
@@ -730,8 +750,8 @@
     transform: scale(1.05);
 }
 #sub-button:active{
-    box-shadow: inset 2px 2px 2px black,
-        inset -2px -2px 2px white;
+    box-shadow: inset 2px 2px 2px var(--text),
+        inset -2px -2px 2px var(--bg);
     transform: scale(.95);
 }
 
@@ -805,7 +825,7 @@
         margin: 5px 0px;
     }
     #flashHeader-content p{
-        color: var(--background);
+        color: var(--bg);
         font-size: 12px;
         margin: 5px 0px;
     }
