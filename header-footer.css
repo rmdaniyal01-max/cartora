@@ -192,6 +192,14 @@ main{
     position: relative;
     bottom: 8px;
 }
+#wishlist{
+    fill: var(--danger);
+    width: 30px;
+    transition: .3s ease;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
 
 /*footer Section*/
 footer{
