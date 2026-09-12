@@ -9,6 +9,13 @@ const productList = JSON.parse(localStorage.getItem("productList")) || [];
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        navLinks.classList.remove("show");
+    }
+});
 
 updateCartCount()
 function updateCartCount(){

@@ -30,7 +30,7 @@ function renderOrders(){
                 <button class="view-order-button" data-id="${order.id}">
                     View Details
                 </button>
-                ${(order.status || "Processing") !=="Cancelled"?`
+                ${(order.status === "Processing")?`
                 <button class="cancel-order-button" data-id="${order.id}">
                     Cancel Order
                 </button>`: ""}

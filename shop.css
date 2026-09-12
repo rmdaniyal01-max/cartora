@@ -585,7 +585,7 @@
         color: var(--accent);
     }
     #hero-description{
-        color: var(--shadow);
+        color: var(--text);
         margin: 20px 0px;
         font-size: clamp(12px,2vw, 14px);
         font-weight: 600;

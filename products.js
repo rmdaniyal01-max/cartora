@@ -2,6 +2,13 @@ let menuButton = document.getElementById("menu-button");
 let navLinks = document.getElementById("nav-links");
 
 menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        navLinks.classList.remove("show");
+    }
+});
 let productList =[];
 
 async function loadProducts() {

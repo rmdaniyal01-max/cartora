@@ -9,6 +9,13 @@ const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 
 menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        navLinks.classList.remove("show");
+    }
+});
 let cart = savedCart ? JSON.parse(savedCart):[];
 updateCartCount();
 

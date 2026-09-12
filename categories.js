@@ -82,6 +82,15 @@ if(window.innerWidth <= 768){
         categoriesLinks.classList.toggle("links-display")
     });
 }
+document.addEventListener("click", (e) => {
+    if (
+        !linksToggle.contains(e.target) &&
+        !menuButton.contains(e.target)
+    ) {
+        categoriesLinks.classList.remove("links-display")
+        navLinks.classList.remove("show");
+    }
+});
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;

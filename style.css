@@ -720,18 +720,18 @@
     justify-content: center;
 }
 #subEmail-input{
-    color: bg;
+    color: var(--bg);
     background: transparent;
     padding: 10px 5px;
     width: 300px;
-    box-shadow: inset -2px -2px 10px var(--text),
-        inset 2px 2px 5px bg;
+    box-shadow: inset -2px -2px 5px var(--text),
+        inset 2px 2px 5px var(--accent);
     border: none;
     transition: box-shadow .3s ease;
 }
 #subEmail-input:focus{
     box-shadow: inset 2px 2px 2px var(--text),
-        inset -2px -2px 2px bg;
+        inset -2px -2px 2px var(--accent);
     outline: none;
 }
 #sub-button{
