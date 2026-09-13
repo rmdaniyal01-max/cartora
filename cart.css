@@ -1,10 +1,22 @@
 
-:root{
-    --primary:#2563EB;
-    --secondary:#10b981;
-    --accent:#F97316;
-    --text:#1F2937;
-    --background:#F8FAFC;
+:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --secondary: #06B6D4;
+    --accent: #F59E0B;
+
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+
+    --text: #0F172A;
+    --text-muted: #64748B;
+
+    --border: #E2E8F0;
+
+    --success: #16A34A;
+    --danger: #DC2626;
+
+    --shadow: rgba(15, 23, 42, 0.08);
 }
 body{
     position: relative;

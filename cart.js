@@ -1,5 +1,6 @@
 const cartContainer = document.getElementById("cart-container");
 const cartCount = document.getElementById("cart-count");
+const wishlistCount = document.getElementById("wishlist-count");
 const cartTotalElement = document.getElementById("cart-total");
 const cartSubTotalElement = document.getElementById("cart-subtotal");
 const checkoutButton = document.getElementById("checkout-button")
@@ -7,6 +8,7 @@ const itemCard = document.getElementById("cart-summary");
 const savedCart = localStorage.getItem("cart");
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
 document.addEventListener("click", (e) => {
@@ -18,6 +20,7 @@ document.addEventListener("click", (e) => {
 });
 let cart = savedCart ? JSON.parse(savedCart):[];
 updateCartCount();
+updateWishlistCount()
 
 function renderCart(){
     cartContainer.innerHTML = "";
@@ -124,4 +127,7 @@ function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;
 }
+function updateWishlistCount(){
+    wishlistCount.textContent = wishlist.length;
+};
 renderCart();

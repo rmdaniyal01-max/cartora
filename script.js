@@ -4,6 +4,10 @@ const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 const topButton = document.getElementById("top-button");
 const cartCount = document.getElementById("cart-count");
+const wishlistContainer = document.getElementById("wishlist-container")
+const wishlistCount = document.getElementById("wishlist-count");
+
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -18,10 +22,14 @@ document.addEventListener("click", (e) => {
 });
 
 updateCartCount()
+updateWishlistCount()
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;
 }
+function updateWishlistCount(){
+    wishlistCount.textContent = wishlist.length;
+};
 
 function renderProducts(){
     productsContainer.innerHTML ="";

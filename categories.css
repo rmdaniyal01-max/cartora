@@ -209,7 +209,7 @@
         padding: 8px 16px;
         border-radius: 20px;
         transition: .3s ease;
-
+        cursor: pointer;
     }
     .product-button:hover{
         background: var(--success);
@@ -217,23 +217,28 @@
     .product-button:active{
         transform: scale(.98);
     }
-    i{
-        font-size: 25px;
-        margin-right: 5px;
-        color: var(--bg);
-        -webkit-text-stroke: 2px var(--primary);
-        transition: .3s ease;
-
+    .product-wishlist-button{
+    color: transparent;
+    font-size: 20px;
+    transition: 0.3s ease;
+    -webkit-text-stroke: 2px var(--primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover{
+        -webkit-text-stroke: 2px var(--accent);
+        color: var(--accent);
+        transform: scale(1.2);
     }
-    i:hover{
-        transform: scale(1.1);
-        color: var(--primary);
-    }
-    i:active{
-        transform: scale(.98);
+    &:active{
         -webkit-text-stroke: 2px var(--danger);
         color: var(--danger);
+        transform: scale(.95);
     }
+}
+.added-to-wishlist{
+    -webkit-text-stroke: 2px var(--danger);
+    color: var(--danger);
 }
 @keyframes slideText{
     0%{
@@ -344,4 +349,5 @@
     #categories-container{
         width: 100%;
     }
+}
 }

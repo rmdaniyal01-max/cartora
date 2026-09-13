@@ -3,12 +3,15 @@ const navLinks = document.getElementById("nav-links");
 const categoriesLinks = document.getElementById("categories-links");
 const categoriesContainer = document.getElementById("categories-container");
 const linksToggle = document.getElementById("links-toggle");
+const wishlistCount = document.getElementById("wishlist-count");
 
 const cartCount = document.getElementById("cart-count");
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
 updateCartCount()
+updateWishlistCount()
 
 const uniqueCategories = [...new Map(productList.map(item => [item.category, item])).values()];
 console.log(uniqueCategories);
@@ -28,6 +31,7 @@ categoryButtons.forEach(button =>{
         const categoryProducts = productList.filter(product => product.category === productCategory);
         categoriesContainer.innerHTML=""
         categoryProducts.forEach(product =>{
+            const isWishlisted = wishlist.some(item => item.id === product.id);
             categoriesContainer.innerHTML+=`
                 <div class="products-Cards">
                     <div class="product-image">
@@ -41,7 +45,7 @@ categoryButtons.forEach(button =>{
                         <p class="product-rating">Ratings: ${product.rating}/100</p>
                         <div class="buttons">
                             <button class="product-button" data-id="${product.id}">Add to Cart</button>
-                            <i class="fa-solid fa-heart"></i>
+                            <button class="product-wishlist-button ${isWishlisted ? "added-to-wishlist" : ""}" data-id="${product.id}"><i class="fa-solid fa-heart"></i></button>
                         </div>
                     </div>
                 </div>
@@ -77,6 +81,25 @@ categoriesContainer.addEventListener("click", (event) =>{
         updateCartCount();
     }
 });
+const wishlistButtons = document.querySelectorAll(".product-wishlist-button");
+wishlistButtons.forEach(button => {
+        button.addEventListener("click",()=>{
+        const productId = button.dataset.id;
+                console.log("worked")
+        const product = productList.find(product => product.id === Number(productId));
+        const existingProduct = wishlist.find(item => item.id === product.id);
+        if(existingProduct){
+            wishlist = wishlist.filter(item => item.id !== product.id);
+            button.classList.remove("added-to-wishlist");
+        }else{
+            wishlist.push(product);
+            button.classList.add("added-to-wishlist");
+        }
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        updateWishlistCount();
+        renderWishlist();
+    });
+});
 if(window.innerWidth <= 768){
     linksToggle.addEventListener("click",()=>{
         categoriesLinks.classList.toggle("links-display")
@@ -94,6 +117,9 @@ document.addEventListener("click", (e) => {
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;
+};
+function updateWishlistCount(){
+    wishlistCount.textContent = wishlist.length;
 };
 
 menuButton.addEventListener("click", () => 

@@ -192,14 +192,33 @@ main{
     position: relative;
     bottom: 8px;
 }
+#wishlist-count{
+    font-size: 12px;
+    color: var(--secondary);
+    border-radius: 50%;
+    position: relative;
+    bottom: 20px;
+    right: 10px;
+    background: var(--bg);
+    padding: 1px 3px;
+}
+#wishlist-link{
+    text-decoration: none;
+}
 #wishlist{
+    text-decoration: none;
     fill: var(--danger);
     width: 30px;
     transition: .3s ease;
     &:hover{
         transform: scale(1.1);
     }
+    &.active{
+        fill: var(--success);
+        border-bottom: 2px solid var(--accent);
+    }
 }
+
 
 /*footer Section*/
 footer{
