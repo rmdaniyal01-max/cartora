@@ -72,7 +72,7 @@ main{
     top: 0;
     left: 00;
     right: 00;
-    z-index: 1000;
+    z-index: 20;
     width: 100%;
     padding: 5px 5px 0px 5px;
     -webkit-backdrop-filter: blur(10px);
@@ -397,17 +397,17 @@ footer{
 
     #nav-links{
         border: 1px solid var(--primary);
-        background-color: var(--bg);
+        background: white;
         display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         position: absolute;
-        top: 28px;
+        top: 27px;
         right: 0;
         gap: 30px;
         width: 80%;
-        height: 95dvh;
+        height: 100dvh;
         padding: 20px;
         animation: nav .5s ease-out ;
     }

@@ -68,6 +68,7 @@ function renderProducts(productList) {
                 }
             }else{
                 cart.push({...product, quantity: 1})
+                button.textContent ="In Cart"
             }
             localStorage.setItem("cart", JSON.stringify(cart));
             updateCartCount();

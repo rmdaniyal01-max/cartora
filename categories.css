@@ -33,7 +33,6 @@
     border-radius: 10px;
     height: 220px;
     box-shadow: 1px 2px 5px var(--text-muted);
-
     #banner-image{
         filter: drop-shadow(2px 5px 2px black);
         animation: float 1s ease infinite alternate;
@@ -89,7 +88,6 @@
         align-items: center;
         gap: 10px;
         color: var(--primary-dark);
-        cursor: pointer;
     }
 }
 #categories-links{
@@ -111,7 +109,7 @@
         font-size: 16px;
         border-radius: 20px;
         background: transparent;
-        border: none;
+        border: 1px solid var(--accent);
         cursor: pointer;
         transition: .3s ease;
     }
@@ -120,6 +118,11 @@
         color: var(--bg);
         font-weight: bolder;
     }
+}
+.active-button{
+    background: linear-gradient(115deg, #F59E0B, #1D4ED8, #06B6D4) !important;
+    color: var(--bg) !important;
+    font-weight: bolder !important;
 }
 
 #categories-container{
@@ -210,12 +213,12 @@
         border-radius: 20px;
         transition: .3s ease;
         cursor: pointer;
-    }
-    .product-button:hover{
-        background: var(--success);
-    }
-    .product-button:active{
-        transform: scale(.98);
+        &:hover{
+            background: var(--success);
+        }
+        &:active{
+            transform: scale(.98);
+        }
     }
     .product-wishlist-button{
     color: transparent;
@@ -225,20 +228,21 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    &:hover{
-        -webkit-text-stroke: 2px var(--accent);
-        color: var(--accent);
-        transform: scale(1.2);
-    }
-    &:active{
-        -webkit-text-stroke: 2px var(--danger);
-        color: var(--danger);
-        transform: scale(.95);
+        &:hover{
+            -webkit-text-stroke: 2px var(--accent);
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+        &:active{
+            -webkit-text-stroke: 2px var(--danger);
+            color: var(--danger);
+            transform: scale(.95);
+        }
     }
 }
 .added-to-wishlist{
-    -webkit-text-stroke: 2px var(--danger);
-    color: var(--danger);
+    -webkit-text-stroke: 2px var(--danger) !important;
+    color: var(--danger) !important;
 }
 @keyframes slideText{
     0%{
@@ -319,6 +323,7 @@
             align-items: center;
             gap: 10px;
             color: var(--primary-dark);
+            cursor: pointer;
         }
     }
     #categories-links{
@@ -329,7 +334,7 @@
         justify-content: space-between;
         border: 1px solid var(--primary);
         height: 95dvh;
-        width: 70%;
+        width: 90%;
         background: white;
         padding: 20px;
         gap: 10px;
@@ -349,5 +354,4 @@
     #categories-container{
         width: 100%;
     }
-}
 }

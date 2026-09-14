@@ -1,6 +1,8 @@
 const wishlistContainer = document.getElementById("wishlist-container")
 const wishlistCount = document.getElementById("wishlist-count");
 const cartCount = document.getElementById("cart-count");
+const menuButton = document.getElementById("menu-button");
+const navLinks = document.getElementById("nav-links");
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
@@ -32,72 +34,59 @@ function renderWishlist(){
                 </div>
             </div>
         `
-        updateCartCount()
-        updateWishlistCount()
+    });
+    if(wishlist.length === 0){
+        wishlistContainer.innerHTML=`
+            <div>
+                <p> You have nothing in your wishlist </p>
+                <a href="shop.html"><button>Shop</button></a>
+            </div>
+        `
+    }
+    const wishlistButtons = document.querySelectorAll(".product-wishlist-button");
+    wishlistButtons.forEach(button => {
+            button.addEventListener("click",()=>{
+            const productId = button.dataset.id;
+            const product = productList.find(product => product.id === Number(productId));
+            const existingProduct = wishlist.find(item => item.id === product.id);
+            if(existingProduct){
+                wishlist = wishlist.filter(item => item.id !== product.id);
+                button.classList.remove("added-to-wishlist");
+            }else{
+                wishlist.push(product);
+                button.classList.add("added-to-wishlist");
+            }
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            updateWishlistCount();
+            renderWishlist();
+        });
+    });
+    wishlistContainer.addEventListener("click", (event) =>{
+        event.stopPropagation()
+        if(event.target.classList.contains("product-button")){
+            const productId = event.target.dataset.id;
+            const product = productList.find(product => product.id === Number(productId));
+            const existingProduct = cart.find(item => item.id === product.id);
+            if(existingProduct){
+                existingProduct.quantity++
+                if(product.stock < existingProduct.quantity){
+                    existingProduct.quantity = product.stock
+                    alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
+                }
+                if(existingProduct.quantity >5){
+                    existingProduct.quantity = 5
+                    alert("Dear Customer! you cannot order more than 5 of the same product at a time");
+                }
+            }else{
+                cart.push({...product, quantity: 1})
+            }
+    
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+        }
     });
 }
 
-wishlistContainer.addEventListener("click",(event) =>{
-    if(event.target.classList.contains("product-wishlist-button")){
-        const productId = event.target.dataset.id;
-        console.log("worked")
-        const product = productList.find(product => product.id === Number(productId));
-        const existingProduct = wishlist.find(item => item.id === product.id);
-        if(existingProduct){
-            wishlist = wishlist.filter(item => item.id !== product.id);
-            button.classList.remove("added-to-wishlist");
-        }else{
-            wishlist.push(product);
-            button.classList.add("added-to-wishlist");
-        }
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        updateWishlistCount();
-        renderWishlist()
-    }
-});
-// const wishlistButtons = document.querySelectorAll(".product-wishlist-button");
-// wishlistButtons.forEach(button => {
-    //     button.addEventListener("click",()=>{
-        // const productId = button.dataset.id;
-        //         console.log("worked")
-//         const product = productList.find(product => product.id === Number(productId));
-//         const existingProduct = wishlist.find(item => item.id === product.id);
-//         if(existingProduct){
-//             wishlist = wishlist.filter(item => item.id !== product.id);
-//             button.classList.remove("added-to-wishlist");
-//         }else{
-//             wishlist.push(product);
-//             button.classList.add("added-to-wishlist");
-//         }
-//         localStorage.setItem("wishlist", JSON.stringify(wishlist));
-//         updateWishlistCount();
-//         renderWishlist();
-//     });
-// });
-wishlistContainer.addEventListener("click", (event) =>{
-    if(event.target.classList.contains("product-button")){
-        const productId = event.target.dataset.id;
-        console.log("worked")
-        const product = productList.find(product => product.id === Number(productId));
-        const existingProduct = cart.find(item => item.id === product.id);
-        if(existingProduct){
-            existingProduct.quantity++
-            if(product.stock < existingProduct.quantity){
-                existingProduct.quantity = product.stock
-                alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
-            }
-            if(existingProduct.quantity >5){
-                existingProduct.quantity = 5
-                alert("Dear Customer! you cannot order more than 5 of the same product at a time");
-            }
-        }else{
-            cart.push({...product, quantity: 1})
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
-    }
-});
 function updateCartCount(){
     const totalItems = cart.reduce((total,item)=>{return total+item.quantity},0);
     cartCount.textContent = totalItems;
@@ -105,4 +94,14 @@ function updateCartCount(){
 function updateWishlistCount(){
     wishlistCount.textContent = wishlist.length;
 };
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        navLinks.classList.remove("show");
+    }
+});
+menuButton.addEventListener("click", () => 
+    navLinks.classList.toggle("show")
+);
 renderWishlist();
