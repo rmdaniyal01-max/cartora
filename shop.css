@@ -51,7 +51,7 @@
 #hero-miniHeading{
     color: var(--accent);
     margin: 5px 0px;
-    font-size: 15px;
+    font-size: 15px;font-weight: 600;
 }
 #hero-heading{
     margin: 20px 0px;
@@ -150,7 +150,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width:60%;
+    width:70%;
     box-shadow: 0 0 5px var(--text-muted);
     padding: 20px;
     border-radius: 20px;
@@ -595,7 +595,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    -webkit-backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(10px);
         padding: 5px;
         border-radius: 5px;
