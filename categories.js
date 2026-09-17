@@ -2,6 +2,7 @@ const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 const categoriesLinks = document.getElementById("categories-links");
 const categoriesContainer = document.getElementById("categories-container");
+const popularCategoriesButton = document.getElementById("popular-categories-button");
 const linksToggle = document.getElementById("links-toggle");
 const wishlistCount = document.getElementById("wishlist-count");
 
@@ -33,6 +34,7 @@ function renderCategories(){
             const productCategory = button.dataset.id;
             const categoryProducts = productList.filter(product => product.category === productCategory);
             categoriesContainer.innerHTML=""
+            categoriesContainer.innerHTML=`<h2 id="category-name">${productCategory}</h2>`
             categoryProducts.forEach(product =>{
                 const isWishlisted = wishlist.some(item => item.id === product.id);
                 categoriesContainer.innerHTML+=`
@@ -115,7 +117,46 @@ function renderCategories(){
         }
     });
 };
+
+function renderPopularCategories(){
+    categoriesContainer.innerHTML="";
+    categoriesContainer.innerHTML =`
+        <h2 id="category-name">Popular Categories</h2>
+        <div id="popular-categories-container">
+        </div>`
+    const popularCategoriesContainer = document.getElementById("popular-categories-container")
+        
+    for(let i=11; i<17; i++){
+        popularCategoriesContainer.innerHTML+=`
+            <div class="popular-category-card">
+                <img src="${uniqueCategories[i].image}" alt="${uniqueCategories[i].name}" loading="lazy" width="150px" height="150px">
+                <div class="popular-category-detail">
+                    <p>${uniqueCategories[i].category}</p>
+                    <button class="product-button" data-id="${uniqueCategories[i].category}">&rarr;</button>
+                </div>
+            </div>
+        `
+    }
+}
+renderPopularCategories();
 renderCategories();
+
+const categoryButtons = document.querySelectorAll(".category-button");
+
+popularCategoriesButton.addEventListener("click",()=>{
+    console.log("clicked");
+    renderPopularCategories();
+    categoryButtons.forEach(btn => {
+        btn.classList.remove("active-button");
+    });
+})
+
+window.addEventListener("resize",()=>{
+    if(window.innerWidth <= 768){
+        linksToggle.textContent ="All ⇾"
+    }
+
+})
 if(window.innerWidth <= 768){
     linksToggle.addEventListener("click",()=>{
         categoriesLinks.classList.toggle("links-display")

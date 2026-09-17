@@ -12,7 +12,7 @@ document.addEventListener("click", (e) => {
 let productList =[];
 
 async function loadProducts() {
-    const savedSession = localStorage.getItem("productList");
+    const savedSession = localStorage.getItem("savedSession");
     if(savedSession){
         productList = JSON.parse(savedSession);
         return;
@@ -32,6 +32,7 @@ async function loadProducts() {
         description:product.description,
         badge:product.tags[1] || product.tags[0]
     }));
+    sessionStorage.setItem("savedSession", JSON.stringify(productList));
     localStorage.setItem("productList", JSON.stringify(productList));
     renderProducts(productList);
     applyFilters()
