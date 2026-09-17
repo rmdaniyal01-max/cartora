@@ -76,7 +76,6 @@ main{
     display: flex;
     padding: 10px;
     position: relative;
-    border: 1px solid red;
 }
 #categories{
     display: flex;
@@ -136,7 +135,6 @@ main{
     height: 80vh;
     padding: 10px;
     overflow-y: auto;
-    border: 1px solid red;
 
     &::-webkit-scrollbar{
         display: none;
@@ -156,7 +154,6 @@ main{
         height: 70vh;
         padding: 5px;
         overflow-y: auto;
-        border: 1px solid red;
         &::-webkit-scrollbar{
             display: none;
         }

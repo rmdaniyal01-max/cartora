@@ -18,6 +18,11 @@
 
     --shadow: rgba(15, 23, 42, 0.08);
 }
+main{
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
 body{
     position: relative;
 }
@@ -212,6 +217,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    justify-self: baseline;
     background: #273549;
     margin-top: 10px;
     padding: 5px 10px;
