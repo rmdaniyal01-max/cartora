@@ -1,185 +1,280 @@
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
-const categoriesLinks = document.getElementById("categories-links");
-const categoriesContainer = document.getElementById("categories-container");
-const popularCategoriesButton = document.getElementById("popular-categories-button");
-const linksToggle = document.getElementById("links-toggle");
+
+const electronicButton = document.getElementById("electronic-button");
+const beautyButton = document.getElementById("beauty-button");
+const fashionButton = document.getElementById("fashion-button");
+const homeButton = document.getElementById("home-button");
+const accessoriesButton = document.getElementById("accessories-button");
+const automativeButton = document.getElementById("automative-button");
+
+const allCategoryButton = document.getElementById("all-category-button");
+
+const categoryMenu = document.getElementById("category-menu")
+
+const categoryContainer = document.getElementById("category-container");
+
 const wishlistCount = document.getElementById("wishlist-count");
-
 const cartCount = document.getElementById("cart-count");
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
-updateCartCount()
-updateWishlistCount()
-
 const uniqueCategories = [...new Map(productList.map(item => [item.category, item])).values()];
 
-function renderCategories(){
-    uniqueCategories.forEach(item =>{
-        categoriesLinks.innerHTML+=`
-            <button class="category-button" data-id="${item.category}">${item.category}</button>
-        `
+function setActiveButton(button) {
+    document.querySelectorAll(".cat-btn").forEach(btn => {
+        btn.classList.remove("active-cat-button");
     });
-    const categoryButtons = document.querySelectorAll(".category-button");
-    categoryButtons.forEach(button =>{
-        button.addEventListener("click", () => {
 
-            categoryButtons.forEach(btn => {
-                btn.classList.remove("active-button");
-            });
-            button.classList.add("active-button");
-
-            const productCategory = button.dataset.id;
-            const categoryProducts = productList.filter(product => product.category === productCategory);
-            categoriesContainer.innerHTML=""
-            categoriesContainer.innerHTML=`<h2 id="category-name">${productCategory}</h2>`
-            categoryProducts.forEach(product =>{
-                const isWishlisted = wishlist.some(item => item.id === product.id);
-                categoriesContainer.innerHTML+=`
-                    <div class="products-Cards">
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}" loading="lazy" width="150px" height="150px">
-                        </div>
-                        <div class="product-details">
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-brand">${product.brand || "Open Source"}</p>
-                            <p class="product-price">$: <ins>${product.price}</ins></p>
-                            <p class="original-price">$: <del>${product.price +3}</del></p>
-                            <p class="product-rating">Ratings: ${product.rating}/100</p>
-                            <div class="buttons">
-                                <button class="product-button" data-id="${product.id}">Add to Cart</button>
-                                <button class="product-wishlist-button ${isWishlisted ? "added-to-wishlist" : ""}" data-id="${product.id}"><i class="fa-solid fa-heart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                `
-            });
-            if(categoriesLinks.classList.contains("links-display")){
-                categoriesLinks.classList.remove("links-display")
-            }
-            
-        });
-    });
-    categoriesContainer.addEventListener("click", (event) => {
-
-        if (event.target.closest(".product-wishlist-button")) {
-
-            const button = event.target.closest(".product-wishlist-button");
-            const productId = button.dataset.id;
-
-
-            const product = productList.find(product => product.id === Number(productId));
-
-            const existingProduct = wishlist.find(item => item.id === product.id);
-
-            if (existingProduct) {
-                wishlist = wishlist.filter(
-                    item => item.id !== product.id
-                );
-
-                button.classList.remove("added-to-wishlist");
-
-            } else {
-                wishlist.push(product);
-
-                button.classList.add("added-to-wishlist");
-            }
-
-            localStorage.setItem("wishlist", JSON.stringify(wishlist));
-
-            updateWishlistCount();
-        }
-    });
-    categoriesContainer.addEventListener("click", (event) =>{
-        if(event.target.closest(".product-button")){
-            const button = event.target.closest(".product-button")
-            const productId = button.dataset.id;
-            const product = productList.find(product => product.id === Number(productId));
-            const existingProduct = cart.find(item => item.id === product.id);
-            if(existingProduct){
-                existingProduct.quantity++
-                if(product.stock < existingProduct.quantity){
-                    existingProduct.quantity = product.stock
-                    alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
-                }
-                if(existingProduct.quantity >5){
-                    existingProduct.quantity = 5
-                    alert("Dear Customer! you cannot order more than 5 of the same product at a time");
-                }
-            }else{
-                cart.push({...product, quantity: 1})
-            }
-    
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartCount();
-        }
-    });
-};
+    button.classList.add("active-cat-button");
+}
 
 function renderPopularCategories(){
-    categoriesContainer.innerHTML="";
-    categoriesContainer.innerHTML =`
-        <h2 id="category-name">Popular Categories</h2>
-        <div id="popular-categories-container">
-        </div>`
-    const popularCategoriesContainer = document.getElementById("popular-categories-container")
-        
-    for(let i=11; i<17; i++){
-        popularCategoriesContainer.innerHTML+=`
-            <div class="popular-category-card">
-                <img src="${uniqueCategories[i].image}" alt="${uniqueCategories[i].name}" loading="lazy" width="150px" height="150px">
-                <div class="popular-category-detail">
-                    <p>${uniqueCategories[i].category}</p>
-                    <button class="product-button" data-id="${uniqueCategories[i].category}">&rarr;</button>
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML =`<h2 id="main-heading">Popular<span id="sub-heading"></span></h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
+
+    for(let i=11; i<17;i++){
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${uniqueCategories[i].image}">
+                <div class="details">
+                    <h2 class="category-name">${uniqueCategories[i].category}</h2>
+                    <button class="category-button" data-id="${uniqueCategories[i].category}">&rarr;</button>
                 </div>
             </div>
         `
     }
 }
-renderPopularCategories();
-renderCategories();
+renderPopularCategories()
+electronicButton.addEventListener("click",()=>{
+    setActiveButton(electronicButton)
 
-const categoryButtons = document.querySelectorAll(".category-button");
+    const electronicCategory = uniqueCategories.filter(product => product.category  .includes("smartphones") || product.category  .includes("tablets") || product.category === "laptops");
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML =`<h2 id="main-heading">Electronics<span id="sub-heading"></span></h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
 
-popularCategoriesButton.addEventListener("click",()=>{
-    console.log("clicked");
-    renderPopularCategories();
-    categoryButtons.forEach(btn => {
-        btn.classList.remove("active-button");
+    electronicCategory.forEach(element => {
+        
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${element.image}">
+                <div class="details">
+                    <h2 class="category-name">${element.category}</h2>
+                    <button class="category-button" data-id="${element.category}">&rarr;</button>
+                </div>
+            </div>
+        `
     });
+    
 })
 
-window.addEventListener("resize",()=>{
-    if(window.innerWidth <= 768){
-        linksToggle.textContent ="All ⇾"
+beautyButton.addEventListener("click",()=>{
+    setActiveButton(beautyButton)
+
+    const beautyCategory = uniqueCategories.filter(product => product.category  .includes("fragrances") || product.category  .includes("sunglasses") || product.category.includes("beauty"));
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML =`<h2 id="main-heading">Beauty<span id="sub-heading"></span></h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
+
+    beautyCategory.forEach(element => {
+        
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${element.image}">
+                <div class="details">
+                    <h2 class="category-name">${element.category}</h2>
+                    <button class="category-button" data-id="${element.category}">&rarr;</button>
+                </div>
+            </div>
+        `
+    });
+
+})
+
+fashionButton.addEventListener("click",()=>{
+    setActiveButton(fashionButton)
+
+    const fashionCategory = uniqueCategories.filter(product => product.category  .includes("sunglasses") || product.category  .includes("womens") || product.category.includes("mens") ||product.category ==="tops");
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML +=`<h2 id="main-heading">Fashion<span id="sub-heading"></span></h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
+
+    fashionCategory.forEach(element => {
+        
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${element.image}">
+                <div class="details">
+                    <h2 class="category-name">${element.category}</h2>
+                    <button class="category-button" data-id="${element.category}">&rarr;</button>
+                </div>
+            </div>
+        `
+    });
+
+})
+
+
+homeButton.addEventListener("click",()=>{
+    setActiveButton(homeButton)
+
+    const homeCategory = uniqueCategories.filter(product => product.category  .includes("home-decoration") || product.category  .includes("furniture") || product.category .includes("groceries") || product.category .includes("kitchen"));
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML =`<h2 id="main-heading">Home & Living<span id="sub-heading"></span></h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
+
+    homeCategory.forEach(element => {
+        
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${element.image}">
+                <div class="details">
+                    <h2 class="category-name">${element.category}</h2>
+                    <button class="category-button" data-id="${element.category}">&rarr;</button>
+                </div>
+            </div>
+        `
+    });
+
+})
+accessoriesButton.addEventListener("click",()=>{
+    setActiveButton(accessoriesButton)
+
+    const accessoriesCategory = uniqueCategories.filter(product => product.category  .includes("accessories"));
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML =`<h2 id="main-heading">Accessories<span id="sub-heading"></span></h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
+
+    accessoriesCategory.forEach(element => {
+        
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${element.image}">
+                <div class="details">
+                    <h2 class="category-name">${element.category}</h2>
+                    <button class="category-button" data-id="${element.category}">&rarr;</button>
+                </div>
+            </div>
+        `
+    });
+
+})
+automativeButton.addEventListener("click",()=>{
+    setActiveButton(automativeButton)
+
+    const automativeCategory = uniqueCategories.filter(product => product.category  .includes("vehicle") || product.category  .includes("motorcycle"));
+    categoryContainer.innerHTML ="";
+    categoryContainer.innerHTML =`<h2 id="main-heading">Automative<span id="sub-heading"></span> </h2>
+        <div id="sub-category-container"></div>
+    `;
+    const subCategoryContainer = document.getElementById("sub-category-container");
+    
+    automativeCategory.forEach(element => {
+        subCategoryContainer.innerHTML+=`
+            <div class="category-card">
+                <img src="${element.image}">
+                <div class="details">
+                    <h2 class="category-name">${element.category}</h2>
+                    <button class="category-button" data-id="${element.category}">&rarr;</button>
+                </div>
+            </div>
+        `
+    });
+
+})
+
+
+
+
+
+
+
+
+
+categoryContainer.addEventListener("click",(event)=>{
+    if(event.target.classList.contains("category-button")){
+        const categoryId = event.target.dataset.id;
+        const products = productList.filter(product => product.category === categoryId);
+        
+        const subHeading = document.getElementById("sub-heading");
+        const subCategoryContainer = document.getElementById("sub-category-container");
+        
+        subHeading.textContent = `, ${categoryId}`
+        subCategoryContainer.innerHTML=""
+        products.forEach(product=>{
+            subCategoryContainer.innerHTML+=`
+                <div class="products-Cards">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy" width="150px" height="150px">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-brand">${product.brand || "Open Source"}</p>
+                        <p class="product-price">$: <ins>${product.price}</ins></p>
+                        <p class="original-price">$: <del>${product.price +3}</del></p>
+                        <p class="product-rating">Ratings: ${product.rating}/100</p>
+                        <div class="buttons">
+                            <button class="product-button" data-id="${product.id}">Add to Cart</button>
+                            <button class="product-wishlist-button" data-id="${product.id}"><i class="fa-solid fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
     }
-
 })
-if(window.innerWidth <= 768){
-    linksToggle.addEventListener("click",()=>{
-        categoriesLinks.classList.toggle("links-display")
-    });
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+updateCartCount()
+updateWishlistCount()
+
 document.addEventListener("click", (e) => {
     if (
-        !linksToggle.contains(e.target) &&
-        !menuButton.contains(e.target)
+        !menuButton.contains(e.target)&&
+        !allCategoryButton.contains(e.target)
     ) {
-        categoriesLinks.classList.remove("links-display");
         navLinks.classList.remove("show");
-    }
-    if(menuButton.contains(e.target)){
-        categoriesLinks.classList.remove("links-display");
-    }
-    if(linksToggle.contains(e.target)){
-        navLinks.classList.remove("show");
+        categoryMenu.classList.remove("show-all-categories");
     }
 });
 menuButton.addEventListener("click", () => {
-    navLinks.classList.toggle("show")
-    categoriesContainer.classList.remove("links-display")
+    navLinks.classList.toggle("show");
+        categoryMenu.classList.remove("show-all-categories");
+
+});
+allCategoryButton.addEventListener("click", () => {
+    categoryMenu.classList.toggle("show-all-categories");
+        navLinks.classList.remove("show");
+
 });
 
 function updateCartCount(){
