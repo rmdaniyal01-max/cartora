@@ -289,24 +289,28 @@ aside{
         transform: scale(.98);
     }
     .product-wishlist-button{
-    color: transparent;
-    font-size: 20px;
-    transition: 0.3s ease;
-    -webkit-text-stroke: 2px var(--primary);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    &:hover{
-        -webkit-text-stroke: 2px var(--accent);
-        color: var(--accent);
-        transform: scale(1.2);
+        color: transparent;
+        font-size: 20px;
+        transition: 0.3s ease;
+        -webkit-text-stroke: 2px var(--primary);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        &:hover{
+            -webkit-text-stroke: 2px var(--danger);
+            color: var(--danger);
+            transform: scale(1.2);
+        }
+        &:active{
+            -webkit-text-stroke: 2px var(--danger);
+            color: var(--danger);
+            transform: scale(.95);
+        }
     }
-    &:active{
-        -webkit-text-stroke: 2px var(--danger);
-        color: var(--danger);
-        transform: scale(.95);
-    }
-    }
+}
+.added-to-wishlist{
+    -webkit-text-stroke: 2px var(--danger) !important;
+    color: var(--danger) !important;
 }
 
 @media (max-width: 768px){

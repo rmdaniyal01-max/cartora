@@ -17,7 +17,7 @@ const categoryContainer = document.getElementById("category-container");
 const wishlistCount = document.getElementById("wishlist-count");
 const cartCount = document.getElementById("cart-count");
 
-const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
 const uniqueCategories = [...new Map(productList.map(item => [item.category, item])).values()];
@@ -217,6 +217,8 @@ categoryContainer.addEventListener("click",(event)=>{
         subHeading.textContent = `, ${categoryId}`
         subCategoryContainer.innerHTML=""
         products.forEach(product=>{
+            const isWishlisted = wishlist.some(item => item.id === product.id);
+
             subCategoryContainer.innerHTML+=`
                 <div class="products-Cards">
                     <div class="product-image">
@@ -230,12 +232,49 @@ categoryContainer.addEventListener("click",(event)=>{
                         <p class="product-rating">Ratings: ${product.rating}/100</p>
                         <div class="buttons">
                             <button class="product-button" data-id="${product.id}">Add to Cart</button>
-                            <button class="product-wishlist-button" data-id="${product.id}"><i class="fa-solid fa-heart"></i></button>
+                            <button class="product-wishlist-button ${isWishlisted ? "added-to-wishlist" : ""}" data-id="${product.id}"><i class="fa-solid fa-heart"></i></button>
                         </div>
                     </div>
                 </div>
             `
         })
+    }
+    if(event.target.classList.contains("product-button")){
+        const productId = Number(event.target.dataset.id);
+        const product = productList.find(product => product.id === productId);
+        const existingProduct = cart.find(item=> item.id === product.id);
+        if(existingProduct){
+            existingProduct.quantity++
+            if(product.stock < existingProduct.quantity){
+                existingProduct.quantity = product.stock
+                alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
+            }
+            if(existingProduct.quantity >5){
+                existingProduct.quantity =5;
+                alert("Dear Customer! you cannot order more than 5 of the same product at a time");
+            }
+        }else{
+            cart.push({...product, quantity: 1})
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+    }
+    if(event.target.closest(".product-wishlist-button")){
+        const productId = Number(event.target.closest(".product-wishlist-button").dataset.id);
+        console.log(productId)
+        const product = productList.find(product => product.id === productId);
+        console.log(product)
+        const existingProduct = wishlist.find(item => item.id === product.id);
+        if(existingProduct){
+            wishlist = wishlist.filter(item => item.id !== product.id);
+            event.target.closest(".product-wishlist-button").classList.remove("added-to-wishlist");
+        }else{
+            wishlist.push(product);
+            event.target.closest(".product-wishlist-button").classList.add("added-to-wishlist");
+        }
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        updateWishlistCount();
+        
     }
 })
 
@@ -264,16 +303,21 @@ document.addEventListener("click", (e) => {
     ) {
         navLinks.classList.remove("show");
         categoryMenu.classList.remove("show-all-categories");
+        menuButton.classList.remove("active")
+
     }
 });
 menuButton.addEventListener("click", () => {
     navLinks.classList.toggle("show");
-        categoryMenu.classList.remove("show-all-categories");
+    menuButton.classList.toggle("active")
+    categoryMenu.classList.remove("show-all-categories");
 
 });
 allCategoryButton.addEventListener("click", () => {
     categoryMenu.classList.toggle("show-all-categories");
-        navLinks.classList.remove("show");
+    navLinks.classList.remove("show");
+    menuButton.classList.remove("active")
+
 
 });
 
