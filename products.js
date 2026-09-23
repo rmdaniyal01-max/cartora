@@ -1,14 +1,7 @@
-let menuButton = document.getElementById("menu-button");
-let navLinks = document.getElementById("nav-links");
+const menuButton = document.getElementById("menu-button");
+const navLinks = document.getElementById("nav-links");
 
-menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
-document.addEventListener("click", (e) => {
-    if (
-        !menuButton.contains(e.target)
-    ) {
-        navLinks.classList.remove("show");
-    }
-});
+
 let productList =[];
 
 async function loadProducts() {
@@ -42,3 +35,17 @@ async function loadProducts() {
 }
 loadProducts();
 
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        navLinks.classList.remove("show");
+        menuButton.classList.remove("active")
+
+    }
+});
+menuButton.addEventListener("click", () => {
+    navLinks.classList.toggle("show")
+    menuButton.classList.toggle("active")
+
+});

@@ -117,14 +117,38 @@ main{
     width: max-content;
     height: max-content;
     opacity: 0;
-    animation: nav 0.5s ease-out 1s forwards;
+    animation: nav .3s ease .5s forwards;
 }
-
 #menu-button span{
-    width: 20px;
     height: 2px;
     background-color: var(--primary);
     border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+#menu-button span:nth-child(1){
+    width: 25px;
+    align-self: flex-end;
+}
+#menu-button span:nth-child(2){
+    width: 20px;
+    align-self: flex-end;
+}
+#menu-button span:nth-child(3){
+    width: 30px;
+    align-self: flex-end;
+}
+#menu-button.active span:nth-child(1){
+    width: 25px;
+    transform: translateY(6px) rotate(45deg);
+}
+#menu-button.active span:nth-child(2){
+    opacity: 0;
+}
+#menu-button.active span:nth-child(3){
+    width: 30px;
+    transform: translateY(-6px) rotate(-50deg);
+    align-self: flex-start;
+
 }
 #nav-links{
     display: flex;
@@ -149,6 +173,12 @@ main{
        transform: translate(0, 0px);
         opacity: 1;
     }
+}
+#nav-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
 }
 
 #nav-links a{
@@ -211,11 +241,14 @@ main{
 }
 #wishlist{
     text-decoration: none;
-    fill: var(--danger);
+    fill: none;
+    stroke: var(--danger);
+    stroke-width: 50;
     width: 30px;
     transition: .3s ease;
     border-radius: 50%;
     &:hover{
+        fill: var(--danger);
         transform: scale(1.1);
     }
     &.active{
@@ -236,6 +269,7 @@ footer{
 #footer-topContainer{
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
 }
 #brand-logo{
     width: 130px;
@@ -340,6 +374,7 @@ footer{
 }
 #footer-middleContainer{
     flex-direction: row;
+    width: 100%;
 }
 .footer-StatisticsInfo{
     display: flex;
@@ -400,6 +435,10 @@ footer{
 
     #menu-button{
         display: flex;
+    }
+    #nav-container{
+        flex-direction: row-reverse;
+        width: 30%;
     }
 
     #nav-links{

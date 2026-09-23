@@ -1,24 +1,20 @@
 const cartContainer = document.getElementById("cart-container");
-const cartCount = document.getElementById("cart-count");
-const wishlistCount = document.getElementById("wishlist-count");
 const cartTotalElement = document.getElementById("cart-total");
 const cartSubTotalElement = document.getElementById("cart-subtotal");
+
+const cartCount = document.getElementById("cart-count");
+const wishlistCount = document.getElementById("wishlist-count");
+
 const checkoutButton = document.getElementById("checkout-button")
 const itemCard = document.getElementById("cart-summary");
 const savedCart = localStorage.getItem("cart");
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
-const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
-document.addEventListener("click", (e) => {
-    if (
-        !menuButton.contains(e.target)
-    ) {
-        navLinks.classList.remove("show");
-    }
-});
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let cart = savedCart ? JSON.parse(savedCart):[];
+
+
 updateCartCount();
 updateWishlistCount()
 
@@ -131,3 +127,16 @@ function updateWishlistCount(){
     wishlistCount.textContent = wishlist.length;
 };
 renderCart();
+menuButton.addEventListener("click", () => {
+    navLinks.classList.toggle("show")
+    menuButton.classList.toggle("active")
+});
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        navLinks.classList.remove("show");
+        menuButton.classList.remove("active")
+
+    }
+});

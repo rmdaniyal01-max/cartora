@@ -107,8 +107,8 @@
     }
 }
 .added-to-wishlist{
-    -webkit-text-stroke: 2px var(--danger);
-    color: var(--danger);
+    -webkit-text-stroke: 2px var(--danger) !important;
+    color: var(--danger) !important;
 }
 }
 @keyframes slideText{

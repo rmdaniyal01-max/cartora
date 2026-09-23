@@ -1,25 +1,19 @@
 const productsContainer = document.getElementById("featured-content");
 const flashProductsContainer = document.getElementById("flash-content");
+const wishlistContainer = document.getElementById("wishlist-container");
+
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 const topButton = document.getElementById("top-button");
+
 const cartCount = document.getElementById("cart-count");
-const wishlistContainer = document.getElementById("wishlist-container")
 const wishlistCount = document.getElementById("wishlist-count");
 
 const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
 const productList = JSON.parse(localStorage.getItem("productList")) || [];
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-menuButton.addEventListener("click", () => navLinks.classList.toggle("show"));
-document.addEventListener("click", (e) => {
-    if (
-        !menuButton.contains(e.target)
-    ) {
-        navLinks.classList.remove("show");
-    }
-});
+
 
 updateCartCount()
 updateWishlistCount()
@@ -133,7 +127,18 @@ window.addEventListener("scroll", () => {
         topButton.classList.remove("moveToTop");
     }
 });
-
+menuButton.addEventListener("click", () => {
+    navLinks.classList.toggle("show")
+    menuButton.classList.toggle("active")
+});
+document.addEventListener("click", (e) => {
+    if (
+        !menuButton.contains(e.target)
+    ) {
+        menuButton.classList.remove("active")
+        navLinks.classList.remove("show");
+    }
+});
 topButton.addEventListener("click", () => {
     window.scrollTo({
         top: 0,

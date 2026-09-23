@@ -126,6 +126,7 @@
     border-radius: 5px;
     margin-right: 10px;
     box-shadow: 0 2px 0 rgb(190, 190, 190);
+    cursor: pointer;
     transition: transform .3s ease;
 }
 #hero-button:hover{
@@ -251,6 +252,9 @@
     padding: 5px 10px;
     border-radius: 5px;
     outline: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 #filterbar button{
     background-color: var(--primary);
@@ -314,13 +318,11 @@
     border: none;
     cursor: pointer;
     &:hover{
-        -webkit-text-stroke: 2px var(--accent);
-        color: var(--accent);
+        -webkit-text-stroke: 2px var(--danger);
+        color: var(--danger);
         transform: scale(1.2);
     }
     &:active{
-        -webkit-text-stroke: 2px var(--danger);
-        color: var(--danger);
         transform: scale(.95);
     }
 }

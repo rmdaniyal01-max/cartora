@@ -1,20 +1,25 @@
 const productsContainer = document.getElementById("products-Container");
+const paginationContainer = document.getElementById ("pagination");
+
 const searchInput = document.getElementById("search-input");
 const categorySelect = document.getElementById("categories");
 const priceSelect = document.getElementById("prices");
 const ratingSelect = document.getElementById("ratings");
 const sortSelect = document.getElementById("sort");
 const resetFilterButton = document.getElementById("filter-resetbButton");
-const paginationContainer = document.getElementById ("pagination");
+
 const details = document.getElementById("info");
-const previousButton = document.createElement("button");
+
 const cartCount = document.getElementById("cart-count");
 const wishlistCount = document.getElementById("wishlist-count");
+
+const previousButton = document.createElement("button");
 previousButton.textContent = "◀"
 previousButton.classList.add("style");
 const nextButton = document.createElement("button");
 nextButton.textContent = "▶"
 nextButton.classList.add("style");
+
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 updateCartCount();
