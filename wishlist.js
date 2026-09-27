@@ -99,9 +99,13 @@ document.addEventListener("click", (e) => {
         !menuButton.contains(e.target)
     ) {
         navLinks.classList.remove("show");
+        menuButton.classList.remove("active")
+
     }
 });
-menuButton.addEventListener("click", () => 
-    navLinks.classList.toggle("show")
-);
+menuButton.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+    menuButton.classList.toggle("active")
+
+});
 renderWishlist();
