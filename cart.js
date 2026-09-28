@@ -1,6 +1,8 @@
 const cartContainer = document.getElementById("cart-container");
+const forYouContainer = document.getElementById("forYou-container");
 const cartTotalElement = document.getElementById("cart-total");
 const cartSubTotalElement = document.getElementById("cart-subtotal");
+const cartSummary = document.getElementById("cart-summary");
 
 const cartCount = document.getElementById("cart-count");
 const wishlistCount = document.getElementById("wishlist-count");
@@ -11,9 +13,9 @@ const savedCart = localStorage.getItem("cart");
 const menuButton = document.getElementById("menu-button");
 const navLinks = document.getElementById("nav-links");
 
-const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+const productList = JSON.parse(localStorage.getItem("productList")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let cart = savedCart ? JSON.parse(savedCart):[];
-
 
 updateCartCount();
 updateWishlistCount()
@@ -66,6 +68,7 @@ function renderCart(){
             <p>Visit our Categories</p>
             <a href="categories.html"><button class="goto-button">Categories</button></a>
         </div>`
+        cartSummary.style.display = "none"
     }
     const increaseButtons = document.querySelectorAll(".increase-button");
     increaseButtons.forEach(button=>{
@@ -127,6 +130,82 @@ function updateWishlistCount(){
     wishlistCount.textContent = wishlist.length;
 };
 renderCart();
+const randomProducts = [...productList]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8);
+function renderForyouProducts(){
+    forYouContainer.innerHTML=`<h2>You May Also Like</h2>
+        <div id="foryou-products"></div>
+    `;
+    const forYouProducts = document.getElementById("foryou-products")
+    randomProducts.forEach(product =>{
+        const isWishlisted = wishlist.some(item => item.id === product.id);
+
+        forYouProducts.innerHTML+=`
+            <div class="forYouProducts-Cards">
+                <div class="forYouProduct-image">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy" width="150px" height="150px">
+                </div>
+                <div class="forYouProduct-details">
+                    <h3 class="forYouProduct-name">${product.name}</h3>
+                    <p class="forYouProduct-brand">${product.brand || "Open Source"}</p>
+                    <p class="forYouProduct-price">$: <ins>${product.price}</ins></p>
+                    <p class="forYouOriginal-price">$: <del>${product.price +3}</del></p>
+                    <p class="forYouProduct-rating">Ratings: ${product.rating}/100</p>
+                    <div class="forYouButtons">
+                        <button class="forYouProduct-button" data-id="${product.id}">Add to Cart</button>
+                        <button class="forYouProduct-wishlist-button ${isWishlisted ? "added-to-wishlist" : ""}" data-id="${product.id}"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+        `
+    })
+    forYouProducts.addEventListener("click",(event)=>{
+        if(event.target.classList.contains("forYouProduct-button")){
+            const productId = Number(event.target.dataset.id);
+            const product = productList.find(product => product.id === productId);
+            const existingProduct = cart.find(item=> item.id === product.id);
+            if(existingProduct){
+                existingProduct.quantity++
+                if(product.stock < existingProduct.quantity){
+                    existingProduct.quantity = product.stock
+                    alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
+                }
+                if(existingProduct.quantity >5){
+                    existingProduct.quantity =5;
+                    alert("Dear Customer! you cannot order more than 5 of the same product at a time");
+                }
+            }else{
+                if(product.stock === 0){
+                    alert(`Dear Customer! We are currently out of stock for this product.`);
+                    return;
+                }
+                cart.push({...product, quantity: 1})
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            cartSummary.style.display = "flex"
+        }
+        if(event.target.closest(".forYouProduct-wishlist-button")){
+            const productId = Number(event.target.closest(".forYouProduct-wishlist-button").dataset.id);
+            const product = productList.find(product => product.id === productId);
+            const existingProduct = wishlist.find(item => item.id === product.id);
+            if(existingProduct){
+                wishlist = wishlist.filter(item => item.id !== product.id);
+                event.target.closest(".forYouProduct-wishlist-button").classList.remove("added-to-wishlist");
+            }else{
+                wishlist.push(product);
+                event.target.closest(".forYouProduct-wishlist-button").classList.add("added-to-wishlist");
+            }
+            localStorage.setItem("wishlist", JSON.stringify(wishlist));
+            updateWishlistCount();
+            
+        }
+    })
+}
+renderForyouProducts();
+
 menuButton.addEventListener("click", () => {
     navLinks.classList.toggle("show")
     menuButton.classList.toggle("active")

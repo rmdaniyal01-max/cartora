@@ -24,24 +24,27 @@ function updateCartCount(){
 function updateWishlistCount(){
     wishlistCount.textContent = wishlist.length;
 };
+const randomProducts = [...productList]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
 
 function renderProducts(){
     productsContainer.innerHTML ="";
-    for(let i=157; i<161; i++){
+    randomProducts.forEach(product =>{
         productsContainer.innerHTML += `
             <div class="featured-Cards">
                 <div class="product-image">
-                    <span class="product-badge">${productList[i].badge}</span>
-                    <img src="${productList[i].image}" alt="Headphones" loading="lazy" width="250px" height="250px">
+                    <span class="product-badge">${product.badge}</span>
+                    <img src="${product.image}" alt="Headphones" loading="lazy" width="250px" height="250px">
                 </div>
-                <h3 class="product-name">${productList[i].name}</h3>
-                <p class="product-brand">${productList[i].brand}</p>
-                <p class="product-rating">Ratings: ${productList[i].rating}/5</p>
-                <p class="product-price">$: <ins>${productList[i].price}</ins></p><p class="original-price">$: <del>${productList[i].price +3}</del></p>
-                <button class="product-button" data-id="${productList[i].id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-brand">${product.brand}</p>
+                <p class="product-rating">Ratings: ${product.rating}/5</p>
+                <p class="product-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${product.price +3}</del></p>
+                <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
             </div>
         `
-    }
+    })
     const cartButtons = document.querySelectorAll(".product-button");
     cartButtons.forEach(button =>{
         button.addEventListener("click",()=>{
@@ -69,28 +72,31 @@ function renderProducts(){
     });
 }
 renderProducts();
+const randomFlashProducts = [...productList]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
 
 
 function renderFlashProducts() {
     flashProductsContainer.innerHTML = ""
-    for(let i=8; i<12; i++){
+    randomFlashProducts.forEach(product =>{
         flashProductsContainer.innerHTML += `
             <div class="flash-Cards">
                 <div class="flashProduct-image">
-                    <span class="flashProduct-badge">${productList[i].badge}</span>
-                    <img src="${productList[i].image}" alt="Headphones" loading="lazy" width="250px" height="260px">
+                    <span class="flashProduct-badge">${product.badge}</span>
+                    <img src="${product.image}" alt="Headphones" loading="lazy" width="250px" height="260px">
                 </div>
                     <div class="flashProduct-details">
-                    <h3 class="flashProduct-name">${productList[i].name}</h3>
-                    <p class="flashProduct-brand">${productList[i].brand}</p>
-                    <p class="flashProduct-rating">Ratings: ${productList[i].rating}/5</p>
-                    <p class="flashProduct-price">$: <ins>${productList[i].price}</ins></p><p class="original-price">$: <del>${productList[i].price +3}</del></p>
-                    <p class="flashProduct-stock">Only ${productList[i].stock} Left</p>
-                    <button class="flashProduct-button" data-id="${productList[i].id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                    <h3 class="flashProduct-name">${product.name}</h3>
+                    <p class="flashProduct-brand">${product.brand}</p>
+                    <p class="flashProduct-rating">Ratings: ${product.rating}/5</p>
+                    <p class="flashProduct-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${product.price +3}</del></p>
+                    <p class="flashProduct-stock">Only ${product.stock} Left</p>
+                    <button class="flashProduct-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
                 </div>
             </div>
         `;
-    };
+    });
     const cartButtons = document.querySelectorAll(".flashProduct-button");
     cartButtons.forEach(button =>{
         button.addEventListener("click",()=>{

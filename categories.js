@@ -30,24 +30,29 @@ function setActiveButton(button) {
     button.classList.add("active-cat-button");
 }
 
+const randomProducts = [...uniqueCategories]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8);
+
 function renderPopularCategories(){
     categoryContainer.innerHTML ="";
-    categoryContainer.innerHTML =`<h2 id="main-heading">Popular<span id="sub-heading"></span></h2>
+    categoryContainer.innerHTML =`<h2 id="main-heading">Featured<span id="sub-heading"></span></h2>
         <div id="sub-category-container"></div>
     `;
     const subCategoryContainer = document.getElementById("sub-category-container");
 
-    for(let i=11; i<17;i++){
+    randomProducts.forEach(product =>{
         subCategoryContainer.innerHTML+=`
             <div class="category-card">
-                <img src="${uniqueCategories[i].image}">
+                <img src="${product.image}">
                 <div class="details">
-                    <h2 class="category-name">${uniqueCategories[i].category}</h2>
-                    <button class="category-button" data-id="${uniqueCategories[i].category}">&rarr;</button>
+                    <h2 class="category-name">${product.category}</h2>
+                    <button class="category-button" data-id="${product.category}">&rarr;</button>
                 </div>
             </div>
         `
-    }
+    })
+        
 }
 renderPopularCategories()
 electronicButton.addEventListener("click",()=>{
@@ -199,13 +204,6 @@ automativeButton.addEventListener("click",()=>{
 })
 
 
-
-
-
-
-
-
-
 categoryContainer.addEventListener("click",(event)=>{
     if(event.target.classList.contains("category-button")){
         const categoryId = event.target.dataset.id;
@@ -245,6 +243,7 @@ categoryContainer.addEventListener("click",(event)=>{
         const existingProduct = cart.find(item=> item.id === product.id);
         if(existingProduct){
             existingProduct.quantity++
+            
             if(product.stock < existingProduct.quantity){
                 existingProduct.quantity = product.stock
                 alert(`Dear Customer! We currently have only ${product.stock} pieces left of this product`)
@@ -254,6 +253,10 @@ categoryContainer.addEventListener("click",(event)=>{
                 alert("Dear Customer! you cannot order more than 5 of the same product at a time");
             }
         }else{
+            if(product.stock === 0){
+                alert(`Dear Customer! We are currently out of stock for this product.`);
+                return;
+            }
             cart.push({...product, quantity: 1})
         }
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -328,3 +331,4 @@ function updateCartCount(){
 function updateWishlistCount(){
     wishlistCount.textContent = wishlist.length;
 };
+
