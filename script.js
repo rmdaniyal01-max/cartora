@@ -38,7 +38,7 @@ function renderProducts(){
                     <img src="${product.image}" alt="Headphones" loading="lazy" width="250px" height="250px">
                 </div>
                 <h3 class="product-name">${product.name}</h3>
-                <p class="product-brand">${product.brand}</p>
+                <p class="product-brand">${product.brand || "open source"}</p>
                 <p class="product-rating">Ratings: ${product.rating}/5</p>
                 <p class="product-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${product.price +3}</del></p>
                 <button class="product-button" data-id="${product.id}"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
@@ -88,7 +88,7 @@ function renderFlashProducts() {
                 </div>
                     <div class="flashProduct-details">
                     <h3 class="flashProduct-name">${product.name}</h3>
-                    <p class="flashProduct-brand">${product.brand}</p>
+                    <p class="flashProduct-brand">${product.brand  || "open source"}</p>
                     <p class="flashProduct-rating">Ratings: ${product.rating}/5</p>
                     <p class="flashProduct-price">$: <ins>${product.price}</ins></p><p class="original-price">$: <del>${product.price +3}</del></p>
                     <p class="flashProduct-stock">Only ${product.stock} Left</p>

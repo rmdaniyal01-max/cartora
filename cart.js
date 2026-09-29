@@ -62,11 +62,10 @@ function renderCart(){
         cartContainer.innerHTML = `
         <div id="empty-cart">
             <p>Looks like your cart is empty!</p>
-            <p>Visit our shop to pick an item you like.</p>
-            <a href="shop.html"><button class="goto-button">Shop</button></a>
+            <p>Visit our <a href="shop.html"><button class="goto-button">Shop</button></a> to pick an item you like.</p>
+            
             <p>Or</p>
-            <p>Visit our Categories</p>
-            <a href="categories.html"><button class="goto-button">Categories</button></a>
+            <p>Visit our <a href="categories.html"><button class="goto-button">Categories</button></a></p>
         </div>`
         cartSummary.style.display = "none"
     }
